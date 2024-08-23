@@ -1,7 +1,7 @@
 /*
     -identificação: 
 
-Guia_01 - 02 / 08 / 2024
+Guia_0401 - 02 / 08 / 2024
 
 Nome: Davi Cândido de Almeida
 Matricula: 857859
@@ -9,12 +9,6 @@ Código de Pessoa: 1527368
 
 */
 
-/*
-    -Cabeçalho:
-    
-Guia_0101.v
-857859 - Davi Cândido de Almeida
-*/
 
 module Guia_0101;
     // define data
