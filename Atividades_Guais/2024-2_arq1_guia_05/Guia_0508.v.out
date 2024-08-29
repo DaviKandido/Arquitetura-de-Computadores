@@ -1,0 +1,104 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x563d1414c5f0 .scope module, "test_f5" "test_f5" 2 42;
+ .timescale 0 0;
+v0x563d14164fb0_0 .net "a", 0 0, L_0x563d14165460;  1 drivers
+v0x563d14165050_0 .net "b", 0 0, L_0x563d141658c0;  1 drivers
+v0x563d141650f0_0 .net "c", 0 0, L_0x563d14165c20;  1 drivers
+v0x563d141651c0_0 .var "x", 0 0;
+v0x563d14165260_0 .var "y", 0 0;
+S_0x563d1414c780 .scope begin, "main" "main" 2 52, 2 52 0, S_0x563d1414c5f0;
+ .timescale 0 0;
+S_0x563d1414c910 .scope module, "moduloA" "f08a" 2 47, 2 13 0, S_0x563d1414c5f0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x563d14165350 .functor NAND 1, v0x563d141651c0_0, v0x563d14165260_0, C4<1>, C4<1>;
+L_0x563d141653c0 .functor NAND 1, v0x563d141651c0_0, v0x563d14165260_0, C4<1>, C4<1>;
+L_0x563d14165460 .functor NAND 1, L_0x563d14165350, L_0x563d141653c0, C4<1>, C4<1>;
+v0x563d1414d580_0 .net "a", 0 0, v0x563d141651c0_0;  1 drivers
+v0x563d14163a60_0 .net "b", 0 0, v0x563d14165260_0;  1 drivers
+v0x563d14163b20_0 .net "not_s1", 0 0, L_0x563d14165350;  1 drivers
+v0x563d14163bc0_0 .net "not_s2", 0 0, L_0x563d141653c0;  1 drivers
+v0x563d14163c80_0 .net "s", 0 0, L_0x563d14165460;  alias, 1 drivers
+S_0x563d14163e10 .scope module, "moduloB" "f08b" 2 48, 2 26 0, S_0x563d1414c5f0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x563d14165520 .functor AND 1, v0x563d141651c0_0, v0x563d14165260_0, C4<1>, C4<1>;
+L_0x563d14165590 .functor NOT 1, L_0x563d14165520, C4<0>, C4<0>, C4<0>;
+L_0x563d14165650 .functor AND 1, v0x563d141651c0_0, v0x563d14165260_0, C4<1>, C4<1>;
+L_0x563d141656c0 .functor NOT 1, L_0x563d14165650, C4<0>, C4<0>, C4<0>;
+L_0x563d141657b0 .functor AND 1, L_0x563d14165590, L_0x563d141656c0, C4<1>, C4<1>;
+L_0x563d141658c0 .functor NOT 1, L_0x563d141657b0, C4<0>, C4<0>, C4<0>;
+v0x563d14164040_0 .net *"_ivl_0", 0 0, L_0x563d14165520;  1 drivers
+v0x563d14164120_0 .net *"_ivl_2", 0 0, L_0x563d14165590;  1 drivers
+v0x563d14164200_0 .net *"_ivl_4", 0 0, L_0x563d14165650;  1 drivers
+v0x563d141642c0_0 .net *"_ivl_6", 0 0, L_0x563d141656c0;  1 drivers
+v0x563d141643a0_0 .net *"_ivl_8", 0 0, L_0x563d141657b0;  1 drivers
+v0x563d141644d0_0 .net "a", 0 0, v0x563d141651c0_0;  alias, 1 drivers
+v0x563d14164570_0 .net "b", 0 0, v0x563d14165260_0;  alias, 1 drivers
+v0x563d14164640_0 .net "s", 0 0, L_0x563d141658c0;  alias, 1 drivers
+S_0x563d14164740 .scope module, "moduloC" "f08c" 2 49, 2 34 0, S_0x563d1414c5f0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x563d14165a10 .functor NOT 1, v0x563d141651c0_0, C4<0>, C4<0>, C4<0>;
+L_0x563d14165a80 .functor NOT 1, v0x563d14165260_0, C4<0>, C4<0>, C4<0>;
+L_0x563d14165b10 .functor OR 1, L_0x563d14165a10, L_0x563d14165a80, C4<0>, C4<0>;
+L_0x563d14165c20 .functor NOT 1, L_0x563d14165b10, C4<0>, C4<0>, C4<0>;
+v0x563d14164970_0 .net *"_ivl_0", 0 0, L_0x563d14165a10;  1 drivers
+v0x563d14164a70_0 .net *"_ivl_2", 0 0, L_0x563d14165a80;  1 drivers
+v0x563d14164b50_0 .net *"_ivl_4", 0 0, L_0x563d14165b10;  1 drivers
+v0x563d14164c40_0 .net "a", 0 0, v0x563d141651c0_0;  alias, 1 drivers
+v0x563d14164d30_0 .net "b", 0 0, v0x563d14165260_0;  alias, 1 drivers
+v0x563d14164e70_0 .net "s", 0 0, L_0x563d14165c20;  alias, 1 drivers
+    .scope S_0x563d1414c5f0;
+T_0 ;
+    %fork t_1, S_0x563d1414c780;
+    %jmp t_0;
+    .scope S_0x563d1414c780;
+t_1 ;
+    %vpi_call 2 53 "$display", "Guia_0508 - Davi C\303\242ndido - 857859" {0 0 0};
+    %vpi_call 2 54 "$display", "Test module" {0 0 0};
+    %vpi_call 2 55 "$display", "   x    y   nand nand  ORI" {0 0 0};
+    %vpi_call 2 57 "$monitor", "%4b %4b %4b %4b %4b", v0x563d141651c0_0, v0x563d14165260_0, v0x563d14164fb0_0, v0x563d14165050_0, v0x563d141650f0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563d141651c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563d14165260_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563d141651c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563d14165260_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563d141651c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563d14165260_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563d141651c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563d14165260_0, 0, 1;
+    %end;
+    .scope S_0x563d1414c5f0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0508.v";

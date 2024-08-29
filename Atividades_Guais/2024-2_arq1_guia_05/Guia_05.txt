@@ -1,0 +1,159 @@
+/*
+    identificação: 
+
+Guia_05 - 29 / 08 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+
+Exercícios
+01.) Projetar e descrever em Verilog, usando apenas portas nativas nor
+um módulo equivalente à expressão (~a & b).
+O nome do arquivo deverá ser Guia_0501.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+
+    (~a & b) = ~(~(~a & b)) = ~(a | ~b) =  ~(a | ~(b|b))
+
+
+
+02.) Projetar e descrever em Verilog, usando apenas portas nativas nand
+um módulo equivalente à expressão (a | ~b).
+O nome do arquivo deverá ser Guia_0502.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+
+    (a | ~b) = ~(~(a | ~b)) = ~(~a & b) = ~(~(a&a) & b)
+
+
+
+03.) Projetar e descrever em Verilog, usando apenas portas nativas nor
+módulo equivalente à expressão ~(~a | b).
+O nome do arquivo deverá ser Guia_0503.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+
+    ~(~a | b) = ~(a & ~b) = ~(~(a & ~b)) = ~(~a | b) = ~(~(a|a) | b)
+
+    ou: ~(~a | b) = ~(~(a|a) | b)
+
+
+04.) Projetar e descrever em Verilog, usando apenas portas nativas nand
+módulo equivalente à expressão ~(~a & b).
+O nome do arquivo deverá ser Guia_0504.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular os módulos no Logisim e
+apresentar layout dos circuitos e subcircuitos.
+
+
+    ~(~a & b) = ~(~(~(~a & b))) = ~(~(a | ~b)) = ~(~a & b) = ~(~(a&a) & b)
+
+    ~(~a & b) = ~(~(a&a) & b)
+
+
+05.) Projetar e descrever em Verilog, usando apenas portas nativas nor
+um módulo equivalente à disjunção exclusiva (~(a ^ b) = a xnor b).
+O nome do arquivo deverá ser Guia_0505.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+
+    n   a b    xnor
+    0   0 0     1
+    1   0 1     0
+    2   1 0     0
+    3   1 1     1
+                            SOP
+    Se:     (a ^ b) = (~a & b) | (a & ~b)
+
+                            POS
+    Então: ~(a ^ b) = ~(a | ~b) & ~(~a | b)
+
+    e: (~(a ^ b) = a xnor b) = ~(a ^ b) ou a ~^ b
+
+    então: ~(a ^ b) = ~(a | ~(b|b)) | ~(~(a|a) | b)
+
+
+    Result: ~(~(a | ~(b|b)) | ~(~(a|a) | b))
+    
+
+
+06.) Projetar e descrever em Verilog, usando apenas portas nativas nand
+um módulo equivalente à negação da disjunção exclusiva (a ^ b = a xor b).
+O nome do arquivo deverá ser Guia_0506.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+    n   a b    xor
+    0   0 0     0
+    1   0 1     1
+    2   1 0     1
+    3   1 1     0
+                        SOP
+    Se: (a ^ b) = (~a & b) | (a & ~b)
+
+    e:   ~(~((~a & b) | (a & ~b)))
+
+    então: ~(~(a | ~b) & ~(~a | b))
+
+    Result: ~(~(a & ~(b&b)) & ~(~(a&a) & b))
+
+
+Extras
+07.) Projetar e descrever em Verilog, usando apenas portas nativas nor
+um módulo equivalente à expressão ( ~a ^ ~b ).
+O nome do arquivo deverá ser Guia_0507.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+    n  ~a ~b    xor
+    0   1  1     0
+    1   1  0     1
+    2   0  1     1
+    3   0  0     0
+
+    se: ( ~a ^ ~b ) = (a & ~b) | (~a & b)
+
+    e:  ~(~(a & ~b)) | ~(~(~a & b))
+
+    então: ~(~a | b) | ~(a | ~b)
+
+    Result: ~(~(a|a) | b) | ~(a | ~(b|b))
+
+    ou: ~(~(~(~(a|a) | b) | ~(a | ~(b|b)))|~(~(~(a|a) | b) | ~(a | ~(b|b))))
+
+
+08.) Projetar e descrever em Verilog, usando apenas portas nativas nand
+um módulo equivalente à expressão ~( ~a | ~b ).
+O nome do arquivo deverá ser Guia_ 0508.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+    n   a  b  ~a ~b    xor
+    0   0  0   1  1     0
+    1   0  1   1  0     0
+    2   1  0   0  1     0
+    3   1  1   0  0     1
+
+    ~( ~a | ~b ) = a&b =  ~(~(a&b)) = ~(~(a&b) & ~(a&b)) 
