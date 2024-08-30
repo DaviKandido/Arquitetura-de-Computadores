@@ -137,9 +137,10 @@ apresentar layout do circuito e subcircuitos.
 
     então: ~(~a | b) | ~(a | ~b)
 
-    Result: ~(~(a|a) | b) | ~(a | ~(b|b))
+    ou seja: ~(~(a|a) | b) | ~(a | ~(b|b))
 
-    ou: ~(~(~(~(a|a) | b) | ~(a | ~(b|b)))|~(~(~(a|a) | b) | ~(a | ~(b|b))))
+    Result: ~(~(~(~(a|a) | b) | ~(a | ~(b|b)))|~(~(~(a|a) | b) | ~(a | ~(b|b))))
+
 
 
 08.) Projetar e descrever em Verilog, usando apenas portas nativas nand
