@@ -44,7 +44,7 @@ module test_f5;
  reg x;
  reg y;
  wire a, b;
- f08a moduloA ( a, x, y );
+ f08a moduloA ( a, x, y );z
  f08b moduloB ( b, x, y );
  f08c moduloC ( c, x, y );
 // ------------------------- parte principal
