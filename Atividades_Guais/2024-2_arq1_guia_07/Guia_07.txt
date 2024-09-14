@@ -1,0 +1,397 @@
+/*
+    identificação: 
+
+Guia_07 - 12 / 09 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368                                        
+
+*/
+
+01.) Projetar e descrever em Verilog, usando portas portas nativas, 
+uma unidade lógica (LU) com operações AND e NAND, inicialmente
+com duas saídas independentes (paralelas, 2 respostas),
+para variáveis de entrada com 01 com bit cada. Acrescentar escolha que permita apenas uma saída selecionável (1 resposta), segundo escolha feita por uma chave de seleção.
+O nome do arquivo deverá ser Guia_0701.v, e poderá seguir o modelo descrito abaixo.
+Incluir previsão de testes. Simular o módulo no Logisim e apresentar layout do circuito e subcircuitos.
+DICA: Usar para o sinal extra para a seleção (0-NAND; 1-AND).  NÃO usar switch-case ou operador ternário.
+
+
+module f0701_and ( output s, input a, input b, input select );
+    
+    wire andAB;
+
+    and AND1(andAB, a, b);
+    and AND2(s, andAB, ~select);
+
+endmodule // f7
+
+
+
+module f0701_nand( output s, input a, input b, input select );
+    
+    wire nandAB;
+
+    nand NAND1(nandAB, a, b);
+    and AND2(s, nandAB, select);
+    
+
+endmodule // mux
+
+Guia_0701 - Davi Cândido de Almeida - 857859
+Test LU's module
+   x    y    s    nand and
+   x    x    x     x    x
+   0    0    0     0    0
+   0    1    0     0    0
+   1    1    0     0    1
+   0    0    1     1    0
+   0    1    1     1    0
+   1    1    1     0    0
+
+
+02.) Projetar e descrever em Verilog, usando portas nativas, uma unidade lógica (LU) com operações OR e NOR,
+com uma saída selecionável (1 resposta), para variáveis de entrada com 01 bit cada.
+O nome do arquivo deverá ser Guia_0702.v. Incluir previsão de testes.
+Simular o módulo no Logisim e apresentar layout do circuito e subcircuitos.
+DICA: Usar para o sinal extra para a seleção (0-NOR; 1-OR).
+ NÃO usar switch-case ou operador ternário.
+
+
+   module f0702_OR ( output s, input a, input b, input select );
+
+      wire orAB;
+
+      or or1(orAB, a, b);
+      and AND2(s, orAB, ~select);
+
+   endmodule
+
+
+   module f0702_NOR( output s, input a, input b, input select );
+      
+      wire norAB;
+
+      nor nor1(norAB, a, b);
+      and AND2(s, norAB, select);
+
+   endmodule
+
+
+   module f0702_OReNOR( output s, input a, input b, input select );
+      
+      wire norAB;
+      wire resulNOR;
+
+      nor nor1(norAB, a, b);
+      and AND2(resulNOR, norAB, select);
+
+      wire orAB;
+      wire resulOR;
+
+      or or1(orAB, a, b);
+      and AND3(resulOR, orAB, ~select);
+
+      or Resl(s, resulNOR, resulOR);
+      
+
+   endmodule
+
+   Guia_0701 - Davi Cândido de Almeida - 857859
+   Test LU's module
+      x    y    s     OR   NOR
+      0    0    0     0    0
+      0    1    0     1    0
+      1    1    0     1    0
+      0    0    1     0    1
+      0    1    1     0    0
+      1    1    1     0    0
+
+   Guia_0701 - Davi Cândido de Almeida - 857859
+   Test LU's module
+      x    y    s     OR/NOR
+      0    0    0     0
+      0    1    0     1
+      1    1    0     1
+      0    0    1     1
+      0    1    1     0
+      1    1    1     0
+
+03.) Projetar e descrever em Verilog, usando portas nativas,
+uma unidade lógica (LU) com o acréscimo das operações
+AND e NAND, com uma saída só para ambas, para variáveis de entrada com 01 bit cada,
+além de OR e NOR na mesma situação. Os resultados de cada grupo serão
+selecionados por uma primeira chave (2x1); para selecionar uma porta em cada grupo,
+e outra chave (2x1) que selecionará entre o grupo (AND,NAND) ou o grupo (OR,NOR).
+O nome do arquivo deverá ser Guia_0703.v. Incluir previsão de testes. Simular o módulo no Logisim e apresentar layout do circuito e subcircuitos. DICA: Usar para um sinal para a seleção de portas (0-NAND/NOR ; 1-AND/OR). Usar para outro sinal para a seleção de grupo (0-AND/NAND ; 1-OR/NOR;).
+ NÃO usar switch-case ou operador ternário.
+
+   module f0703( output s, input a, input b, input sel_1, input sel_2 );
+      
+      or or1(or1, a, b);
+      nor nor1 (nor1, a, b);
+
+      and and1(and1, or1, sel_1);
+      and and2(and2, nor1, ~sel_1);
+      and and3(and3, a, b, sel_1);
+      nand nand1(nand1, a, b);
+
+      and and4(and4, nand1, ~sel_1);
+
+      or or2(or2, and1, and2);
+      or or3(or3, and3, and4);
+
+      and and5(and5, or2, sel_2);
+      and and6(and6, or3, ~sel_2);
+
+      or or4(s, and5, and6);
+      
+
+   endmodule 
+
+   Guia_0703 - Davi Cândido de Almeida - 857859
+   Test LU's module
+      x    y    (0-NAND/NOR)/(1-AND/OR) (0-AND/NAND)/(1-OR/NOR)   Result
+      0    0				   0					0				 1
+      0    0				   0					1				 1
+      0    0				   1					0				 0
+      0    0				   1					1			     0
+      0    1				   0					0				 1
+      0    1				   0					1				 0
+      0    1				   1					0				 0
+      0    1				   1					1				 1
+      1    0				   0					0				 1
+      1    0				   0					1				 0
+      1    0				   1					0				 0
+      1    0				   1					1				 1
+      1    1				   0					0				 0
+      1    1				   0					1				 0
+      1    1				   1					0				 1
+      1    1				   1					1				 1
+
+04.) Projetar e descrever em Verilog, usando portas nativas, uma unidade lógica (LU) com o acréscimo das operações XOR e XNOR, , com uma saída só para ambas, para variáveis de entrada com 01 bit cada,
+além de OR E NOR; na mesma situação. Os resultados de cada grupo serão selecionáveis
+entre o grupo (OR, NOR) ou o grupo (XOR, XNOR), seleção (4x1).
+O nome do arquivo deverá ser Guia_0704.v. Incluir previsão de testes.
+Simular o módulo no Logisim e apresentar layout do circuito e subcircuitos.
+DICA: Usar para o sinal extra de 2 bits para a seleção (00-NOR; 01-OR;10-XOR; 11-XNOR).
+ NÃO usar switch-case ou operador ternário.
+
+
+   module f0704( output s, input a, input b, input sel_1, input sel_2 );
+
+      xor XOR1(xor1, a, b);
+      and AND1(and1, xor1, sel_1, ~sel_2);
+
+      nor NOR1(nor1, a, b);
+      and AND2(and2, nor1, ~sel_1, ~sel_2);
+
+      or OR1(or1, a, b);
+      and AND3(and3, or1, ~sel_1, sel_2);
+
+      xnor XNOR1(xnor1, a, b);
+      and AND4(and4, xnor1, sel_1, sel_2);
+
+      or OR2(s, and1, and2, and3, and4);
+
+   endmodule
+
+
+   Guia_0704 - Davi Cândido de Almeida - 857859
+   x    y     00-NOR 01-OR 10-XOR 11-XNOR    NOR/OR/XOR/XNOR
+   0    0				    0   0 				   1
+   0    0				    0   1 				   0
+   0    0				    1   0 				   0
+   0    0				    1   1 				   1
+   0    1				    0   0 				   0
+   0    1				    0   1 				   1
+   0    1				    1   0 				   1
+   0    1				    1   1 				   0
+   1    0				    0   0 				   0
+   1    0				    0   1 				   1
+   1    0				    1   0 				   1
+   1    0				    1   1 				   0
+   1    1				    0   0 				   0
+   1    1				    0   1 				   1
+   1    1				    1   0 				   0
+   1    1				    1   1 				   1
+
+05.) Projetar e descrever em Verilog, usando portas nativas, uma unidade lógica (LU) com o acréscimo das operações NOT, AND, NAND, OR, NOR, XOR, XNOR, simultâneas, com apenas 1 saída,
+selecionável (7x1). O nome do arquivo deverá ser Guia_0705.v.
+Incluir previsão de testes. Simular o módulo no Logisim e apresentar layout do circuito e subcircuitos.
+DICA: Usar um sinal extra de 3 bits para a seleção.  Sobrará uma chave de seleção, e poderá ser empregada para a negação de outro operando. NÃO usar switch-case ou operador ternário.
+
+   module f0705( output s, input a, input b, input sel_1, input sel_2, input sel_3 );
+      
+      not not1(not1, b);
+      and AND1(Res1, not1, ~sel_1, ~sel_2, ~sel_3);
+
+      and and11(and11, a, b);
+      and AND2(Res2, and11, ~sel_1, ~sel_2, sel_3);
+
+      nand nand1(nand1, a, b);
+      and AND3(Res3, nand1, ~sel_1, sel_2, ~sel_3);
+
+      or or1(or1, a, b);
+      and AND4(Res4, or1, ~sel_1, sel_2, sel_3);
+
+      nor nor1(nor1, a, b);
+      and AND5(Res5, nor1, sel_1, ~sel_2, ~sel_3);
+
+      xor xor1(xor1, a, b);
+      and AND6(Res6, xor1, sel_1, ~sel_2, sel_3);
+
+      xnor xnor1(xnor1, a, b);
+      and AND7(Res7, xnor1, sel_1, sel_2, sel_3);
+
+
+      or OR2(s, Res1, Res2, Res3, Res4, Res5, Res6, Res7);
+
+   endmodule
+      
+   Guia_0705 - Davi Cândido de Almeida - 857859
+   000-NOT 001-AND 010-NAND 011-OR 100-NOR 101-XOR 111-XNOR   
+      x    y   	    s  		     Result
+      0    0	    0   0   0 		   1
+      0    1	    0   0   0 		   0
+      1    0	    0   0   0 		   1
+      1    1	    0   0   0 		   0
+      0    0	    0   1   0 		   1
+      0    1	    0   1   0 		   1
+      1    0	    0   1   0 		   1
+      1    1	    0   1   0 		   0
+      0    0	    1   0   0 		   1
+      0    1	    1   0   0 		   0
+      1    0	    1   0   0 		   0
+      1    1	    1   0   0 		   0
+      0    0	    1   1   0 		   0
+      0    1	    1   1   0 		   0
+      1    0	    1   1   0 		   0
+      1    1	    1   1   0 		   0
+      0    0	    0   0   1 		   0
+      0    1	    0   0   1 		   0
+      1    0	    0   0   1 		   0
+      1    1	    0   0   1 		   1
+      0    0	    0   1   1 		   0
+      0    1	    0   1   1 		   1
+      1    0	    0   1   1 		   1
+      1    1	    0   1   1 		   1
+      0    0	    1   0   1 		   0
+      0    1	    1   0   1 		   1
+      1    0	    1   0   1 		   1
+      1    1	    1   0   1 		   0
+      0    0	    1   1   1 		   1
+      0    1	    1   1   1 		   0
+      1    0	    1   1   1 		   0
+      1    1	    1   1   1 		   1
+
+
+Extras
+
+06.) Projetar e descrever em Verilog, usando portas nativas, uma unidade lógica (LU) com um comparador de bits
+usando portas XOR e XNOR para calcular a igualdade ou desigualdade, respectivamente,
+para duas variáveis com 3 bits cada, selecionável (0-igual; 1-diferente).
+O nome do arquivo deverá ser Guia_0706.v. Incluir previsão de testes.
+Simular o módulo no Logisim e apresentar layout do circuito e subcircuitos.
+DICA: Montar a tabela-verdade e identificar os mintermos.
+
+ module f0706( output s, input a1, input b1, input c1, input a2, input b2, input c2);
+    
+
+    xnor XNOR1(xnor1, a1, a2);
+    xnor XNOR2(xnor2, b1, b2);
+    xnor XNOR3(xnor3, c1, c2);
+
+    and AND(s, xnor1, xnor2, xnor3);
+
+ endmodule
+
+ ___________________________________________________________________________  
+| m | a b c | 0 0 0 | 0 0 1 | 0 1 0 | 0 1 1 | 1 0 0 | 1 0 1 | 1 1 0 | 1 1 1 |
+|---|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| 0 | 0 0 0 |   1   |       |       |       |       |       |       |       |
+| 1 | 0 0 1 |       |   1   |       |       |       |       |       |       |
+| 2 | 0 1 0 |       |       |   1   |       |       |       |       |       |
+| 3 | 0 1 1 |       |       |       |   1   |       |       |       |       |
+| 4 | 1 0 0 |       |       |       |       |   1   |       |       |       |
+| 5 | 1 0 1 |       |       |       |       |       |   1   |       |       |
+| 6 | 1 1 0 |       |       |       |       |       |       |   1   |       |
+| 7 | 1 1 1 |       |       |       |       |       |       |       |   1   |
+|___|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+
+
+Guia_0706 - Davi Cândido de Almeida - 857859
+  Comparações: 1-igual  0-diferente   
+   a1  b1  c1   a2  b2  c2     Result
+   0   0   0    0   0   0       1
+   0   1   0    0   0   0       0
+   1   0   0    0   0   0       0
+   1   1   0    0   0   0       0
+   0   0   0    1   0   0       0
+   0   1   0    1   0   0       0
+   1   0   0    1   0   0       1
+   1   1   0    1   0   0       0
+   0   0   0    0   1   0       0
+   0   1   0    0   1   0       1
+   1   0   0    0   1   0       0
+   1   1   0    0   1   0       0
+   0   0   0    1   1   0       0
+   0   1   0    1   1   0       0
+   1   0   0    1   1   0       0
+   1   1   0    1   1   0       1
+
+07.) Projetar e descrever em Verilog, usando portas nativas,uma unidade lógica (LU) com um comparador de bits
+usando apenas portas básicas (NOT, AND, OR) para calcular a magnitude (se maior ou menor),
+para duas variáveis com 3 bits cada, selecionável (0-menor; 1-maior).
+O nome do arquivo deverá ser Guia_0707.v. Incluir previsão de testes.
+Simular o módulo no Logisim e apresentar layout do circuito e subcircuitos.
+DICA: Montar a tabela-verdade e identificar os mintermos.
+
+ module f0707( output s, input a1, input b1, input c1, input a2, input b2, input c2);
+    
+  and AND1(and1, ~a2, ~b2, ~c2, (a1 | b1 | c1));
+  and AND2(and2, ~a2, ~b2,  c2, (a1 | b1) );
+  and AND3(and3, ~a2,  b2, ~c2, ((c1 & b1) | a1));
+  and AND4(and4, ~a2,  b2,  c2, a1);
+  and AND5(and5,  a2, ~b2, ~c2, ((a1 & b1)|c1));
+  and AND6(and6,  a2, ~b2,  c2, b1);
+  and AND7(and7,  a2,  b2, ~c2, c1);
+
+  or OR1(s, and1, and2, and3, and4, and5, and6, and7);
+
+ endmodule 
+
+ ___________________________________________________________________________  
+| m | a b c | 0 0 0 | 0 0 1 | 0 1 0 | 0 1 1 | 1 0 0 | 1 0 1 | 1 1 0 | 1 1 1 |
+|---|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| 0 | 0 0 0 |       |   1   |   1   |   1   |   1   |   1   |   1   |   1   |
+| 1 | 0 0 1 |       |       |   1   |   1   |   1   |   1   |   1   |   1   |
+| 2 | 0 1 0 |       |       |       |   1   |   1   |   1   |   1   |   1   |
+| 3 | 0 1 1 |       |       |       |       |   1   |   1   |   1   |   1   |
+| 4 | 1 0 0 |       |       |       |       |       |   1   |   1   |   1   |
+| 5 | 1 0 1 |       |       |       |       |       |       |   1   |   1   |
+| 6 | 1 1 0 |       |       |       |       |       |       |       |   1   |
+| 7 | 1 1 1 |       |       |       |       |       |       |       |       |
+|___|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+
+
+Guia_0707 - Davi Cândido de Almeida - 857859
+  Comparações: 1-maior  0-menor   
+   a1  b1  c1   a2  b2  c2     Result
+   0   0   0    0   0   0       0
+   0   1   0    0   0   0       1
+   1   0   0    0   0   0       1
+   1   1   0    0   0   0       1
+   0   0   0    1   0   0       0
+   0   1   0    1   0   0       0
+   1   0   0    1   0   0       0
+   1   1   0    1   0   0       1
+   0   0   0    0   1   0       0
+   0   1   0    0   1   0       0
+   1   0   0    0   1   0       1
+   1   1   0    0   1   0       1
+   0   0   0    1   1   0       0
+   0   1   0    1   1   0       0
+   1   0   0    1   1   0       0
+   1   1   0    1   1   0       0
