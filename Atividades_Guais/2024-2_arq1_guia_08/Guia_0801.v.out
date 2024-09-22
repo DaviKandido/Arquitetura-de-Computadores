@@ -1,0 +1,182 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x555f20522120 .scope module, "test_Complemento_de_2_completo" "test_Complemento_de_2_completo" 2 38;
+ .timescale 0 0;
+v0x555f2054f090_0 .net "Complemento_de_2", 4 0, L_0x555f205505d0;  1 drivers
+v0x555f2054f170_0 .net "vai_um", 4 0, L_0x555f205506c0;  1 drivers
+v0x555f2054f250_0 .var "x", 4 0;
+L_0x555f2054f590 .part v0x555f2054f250_0, 0, 1;
+L_0x555f2054f830 .part v0x555f2054f250_0, 1, 1;
+L_0x555f2054f960 .part L_0x555f205506c0, 0, 1;
+L_0x555f2054fca0 .part v0x555f2054f250_0, 2, 1;
+L_0x555f2054fdd0 .part L_0x555f205506c0, 1, 1;
+L_0x555f20550110 .part v0x555f2054f250_0, 3, 1;
+L_0x555f20550310 .part L_0x555f205506c0, 2, 1;
+LS_0x555f205505d0_0_0 .concat8 [ 1 1 1 1], L_0x555f2054f310, L_0x555f2054f650, L_0x555f2054fa90, L_0x555f2054ff00;
+LS_0x555f205505d0_0_4 .concat8 [ 1 0 0 0], L_0x555f20550440;
+L_0x555f205505d0 .concat8 [ 4 1 0 0], LS_0x555f205505d0_0_0, LS_0x555f205505d0_0_4;
+LS_0x555f205506c0_0_0 .concat8 [ 1 1 1 1], L_0x555f2054f4b0, L_0x555f2054f750, L_0x555f2054fbc0, L_0x555f20550030;
+LS_0x555f205506c0_0_4 .concat8 [ 1 0 0 0], L_0x555f205504f0;
+L_0x555f205506c0 .concat8 [ 4 1 0 0], LS_0x555f205506c0_0_0, LS_0x555f205506c0_0_4;
+L_0x555f205507f0 .part v0x555f2054f250_0, 4, 1;
+L_0x555f20550980 .part L_0x555f205506c0, 3, 1;
+S_0x555f2051f260 .scope module, "FS0" "Complemento_de_2_completo" 2 46, 2 27 0, S_0x555f20522120;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vem_um";
+v0x555f204f4ba0_0 .net "S0", 0 0, L_0x555f2054f310;  1 drivers
+v0x555f2054bda0_0 .net "S1", 0 0, L_0x555f2054f4b0;  1 drivers
+v0x555f2054be40_0 .net "a", 0 0, L_0x555f2054f590;  1 drivers
+L_0x7fc81a52d018 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x555f2054bf40_0 .net "vem_um", 0 0, L_0x7fc81a52d018;  1 drivers
+S_0x555f20522a40 .scope module, "HS1" "Complemento_de_1" 2 30, 2 16 0, S_0x555f2051f260;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vai_um";
+L_0x555f2054f310 .functor XOR 1, L_0x555f2054f590, L_0x7fc81a52d018, C4<0>, C4<0>;
+L_0x555f2054f4b0 .functor AND 1, L_0x555f2054f590, L_0x7fc81a52d018, C4<1>, C4<1>;
+v0x555f2051eca0_0 .net "S0", 0 0, L_0x555f2054f310;  alias, 1 drivers
+v0x555f20522030_0 .net "S1", 0 0, L_0x555f2054f4b0;  alias, 1 drivers
+v0x555f20520e30_0 .net "a", 0 0, L_0x555f2054f590;  alias, 1 drivers
+v0x555f2051fc30_0 .net "vai_um", 0 0, L_0x7fc81a52d018;  alias, 1 drivers
+S_0x555f2054c040 .scope module, "FS1" "Complemento_de_2_completo" 2 47, 2 27 0, S_0x555f20522120;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vem_um";
+v0x555f2054c810_0 .net "S0", 0 0, L_0x555f2054f650;  1 drivers
+v0x555f2054c8d0_0 .net "S1", 0 0, L_0x555f2054f750;  1 drivers
+v0x555f2054c9a0_0 .net "a", 0 0, L_0x555f2054f830;  1 drivers
+v0x555f2054caa0_0 .net "vem_um", 0 0, L_0x555f2054f960;  1 drivers
+S_0x555f2054c220 .scope module, "HS1" "Complemento_de_1" 2 30, 2 16 0, S_0x555f2054c040;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vai_um";
+L_0x555f2054f650 .functor XOR 1, L_0x555f2054f830, L_0x555f2054f960, C4<0>, C4<0>;
+L_0x555f2054f750 .functor AND 1, L_0x555f2054f830, L_0x555f2054f960, C4<1>, C4<1>;
+v0x555f2054c430_0 .net "S0", 0 0, L_0x555f2054f650;  alias, 1 drivers
+v0x555f2054c510_0 .net "S1", 0 0, L_0x555f2054f750;  alias, 1 drivers
+v0x555f2054c5d0_0 .net "a", 0 0, L_0x555f2054f830;  alias, 1 drivers
+v0x555f2054c6a0_0 .net "vai_um", 0 0, L_0x555f2054f960;  alias, 1 drivers
+S_0x555f2054cba0 .scope module, "FS2" "Complemento_de_2_completo" 2 48, 2 27 0, S_0x555f20522120;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vem_um";
+v0x555f2054d460_0 .net "S0", 0 0, L_0x555f2054fa90;  1 drivers
+v0x555f2054d520_0 .net "S1", 0 0, L_0x555f2054fbc0;  1 drivers
+v0x555f2054d5f0_0 .net "a", 0 0, L_0x555f2054fca0;  1 drivers
+v0x555f2054d6f0_0 .net "vem_um", 0 0, L_0x555f2054fdd0;  1 drivers
+S_0x555f2054ce20 .scope module, "HS1" "Complemento_de_1" 2 30, 2 16 0, S_0x555f2054cba0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vai_um";
+L_0x555f2054fa90 .functor XOR 1, L_0x555f2054fca0, L_0x555f2054fdd0, C4<0>, C4<0>;
+L_0x555f2054fbc0 .functor AND 1, L_0x555f2054fca0, L_0x555f2054fdd0, C4<1>, C4<1>;
+v0x555f2054d0a0_0 .net "S0", 0 0, L_0x555f2054fa90;  alias, 1 drivers
+v0x555f2054d160_0 .net "S1", 0 0, L_0x555f2054fbc0;  alias, 1 drivers
+v0x555f2054d220_0 .net "a", 0 0, L_0x555f2054fca0;  alias, 1 drivers
+v0x555f2054d2f0_0 .net "vai_um", 0 0, L_0x555f2054fdd0;  alias, 1 drivers
+S_0x555f2054d7f0 .scope module, "FS3" "Complemento_de_2_completo" 2 49, 2 27 0, S_0x555f20522120;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vem_um";
+v0x555f2054e0a0_0 .net "S0", 0 0, L_0x555f2054ff00;  1 drivers
+v0x555f2054e160_0 .net "S1", 0 0, L_0x555f20550030;  1 drivers
+v0x555f2054e230_0 .net "a", 0 0, L_0x555f20550110;  1 drivers
+v0x555f2054e330_0 .net "vem_um", 0 0, L_0x555f20550310;  1 drivers
+S_0x555f2054da40 .scope module, "HS1" "Complemento_de_1" 2 30, 2 16 0, S_0x555f2054d7f0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vai_um";
+L_0x555f2054ff00 .functor XOR 1, L_0x555f20550110, L_0x555f20550310, C4<0>, C4<0>;
+L_0x555f20550030 .functor AND 1, L_0x555f20550110, L_0x555f20550310, C4<1>, C4<1>;
+v0x555f2054dcc0_0 .net "S0", 0 0, L_0x555f2054ff00;  alias, 1 drivers
+v0x555f2054dda0_0 .net "S1", 0 0, L_0x555f20550030;  alias, 1 drivers
+v0x555f2054de60_0 .net "a", 0 0, L_0x555f20550110;  alias, 1 drivers
+v0x555f2054df30_0 .net "vai_um", 0 0, L_0x555f20550310;  alias, 1 drivers
+S_0x555f2054e430 .scope module, "FS4" "Complemento_de_2_completo" 2 50, 2 27 0, S_0x555f20522120;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vem_um";
+v0x555f2054ed00_0 .net "S0", 0 0, L_0x555f20550440;  1 drivers
+v0x555f2054edc0_0 .net "S1", 0 0, L_0x555f205504f0;  1 drivers
+v0x555f2054ee90_0 .net "a", 0 0, L_0x555f205507f0;  1 drivers
+v0x555f2054ef90_0 .net "vem_um", 0 0, L_0x555f20550980;  1 drivers
+S_0x555f2054e6d0 .scope module, "HS1" "Complemento_de_1" 2 30, 2 16 0, S_0x555f2054e430;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "S0";
+    .port_info 1 /OUTPUT 1 "S1";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "vai_um";
+L_0x555f20550440 .functor XOR 1, L_0x555f205507f0, L_0x555f20550980, C4<0>, C4<0>;
+L_0x555f205504f0 .functor AND 1, L_0x555f205507f0, L_0x555f20550980, C4<1>, C4<1>;
+v0x555f2054e920_0 .net "S0", 0 0, L_0x555f20550440;  alias, 1 drivers
+v0x555f2054ea00_0 .net "S1", 0 0, L_0x555f205504f0;  alias, 1 drivers
+v0x555f2054eac0_0 .net "a", 0 0, L_0x555f205507f0;  alias, 1 drivers
+v0x555f2054eb90_0 .net "vai_um", 0 0, L_0x555f20550980;  alias, 1 drivers
+    .scope S_0x555f20522120;
+T_0 ;
+    %vpi_call 2 54 "$display", "Guia_0802 - Davi C\303\242ndido de Almeida - 857859" {0 0 0};
+    %vpi_call 2 55 "$display", "Test Complemento_de_2_completo" {0 0 0};
+    %pushi/vec4 10, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %vpi_call 2 61 "$monitor", "x = %b, vai_um = %b, Complemento_de_2 = %b", v0x555f2054f250_0, v0x555f2054f170_0, v0x555f2054f090_0 {0 0 0};
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 2, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 3, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 4, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 5, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 8, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 2, 0, 5;
+    %store/vec4 v0x555f2054f250_0, 0, 5;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0801.v";

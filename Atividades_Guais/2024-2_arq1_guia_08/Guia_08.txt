@@ -1,0 +1,207 @@
+/*
+    identificação: 
+
+Guia_08 - 19 / 09 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+
+01.) Projetar e descrever em Verilog, usando portas nativas,
+uma unidade aritmética (AU) com um somador completo,
+utilizando o modelo compacto para a “meia-soma”,
+para operandos de 05 bits (sinal=1+amplitude=4).
+O nome do arquivo deverá ser Guia_0801.v,
+e poderá seguir o modelo descrito abaixo.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+Exemplo:
+“vai-um” final
+ ↓
+  s41 s31 s21 s01 0 ← “vai-um” inicial arbitrário
+        a3 a2 a1 a0 +
+        b3 b2 b1 b0
+_________________________
+ s04 s03 s02 s01 s00
+
+
+ ___________________ 
+| m | a b | s1 | s0 |
+|---|-----|----|----|
+| 0 | 0 0 |  0 |  0 |
+| 1 | 0 1 |  0 |  1 |
+| 2 | 1 0 |  0 |  1 |
+| 3 | 1 1 |  1 |  0 |
+|___|_____|____|____|
+
+S0 = SoP(1,2) = a'•b + a•'b = a ^b
+
+S1 = SoP(3)   = a•b
+
+
+02.) Projetar e descrever em Verilog, usando portas nativas,
+uma unidade aritmética (AU) com um subtrator completo,
+utilizando o modelo compacto para a “meia-diferença”,
+para operandos de 05 bits (sinal=1+amplitude=4).
+O nome do arquivo deverá ser Guia_0802.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+
+Exemplo:
+“vem-um” final
+ ↓
+ s41 s31 s21 s01 0 ← “vem-um” inicial arbitrário
+       a3 a2 a1 a0 +
+       b3 b2 b1 b0
+_________________________
+ s04 s03 s02 s01 s00
+
+
+  ___________________ 
+| m | a b | s1 | s0 |
+|---|-----|----|----|
+| 0 | 0 0 |  0 |  0 |
+| 1 | 0 1 |  1 |  1 |
+| 2 | 1 0 |  0 |  1 |
+| 3 | 1 1 |  0 |  0 |
+|___|_____|____|____|
+
+S0 = SoP(1,2) = a'•b + a•'b = a ^b
+
+S1 = SoP(1)   = a'•b
+
+ 03.) Projetar e descrever em Verilog, usando portas nativas,
+uma unidade lógica (LU) com um comparador para igualdade,
+para 05 bits (sinal=1+amplitude=4).
+O nome do arquivo deverá ser Guia_0803.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+
+Exemplo:
+x y s = igual
+0 0 1
+0 1 0
+1 0 0
+1 1 1
+
+ a3 a2 a1 a0 ~^ ← “xnor”
+ b3 b2 b1 b0
+________________________
+ s3 s2 s1 s0
+
+
+ ______________
+| m | a b |  s | (xnor) = (a^b)'
+|---|-----|----|
+| 0 | 0 0 |  1 |
+| 1 | 0 1 |  0 |
+| 2 | 1 0 |  0 |
+| 3 | 1 1 |  1 |
+|___|_____|____|
+
+
+s = f ( s3, s2, s1, s0 ) // todos iguais a 1
+
+04.) Projetar e descrever em Verilog, usando portas nativas,
+uma unidade lógica (LU) com um comparador para desigualdade,
+para 05 bits (sinal=1+amplitude=4).
+O nome do arquivo deverá ser Guia_0804.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+
+Exemplo:
+x y s = desigualdade
+0 0 0
+0 1 1
+1 0 1
+1 1 0
+ a3 a2 a1 a0 ^ ← “xor”
+ b3 b2 b1 b0
+______________________
+ s3 s2 s1 s0
+
+ ______________
+| m | a b |  s | (xor) = a^b
+|---|-----|----|
+| 0 | 0 0 |  0 |
+| 1 | 0 1 |  1 |
+| 2 | 1 0 |  1 |
+| 3 | 1 1 |  0 |
+|___|_____|____|
+
+
+s = f ( s3, s2, s1, s0 ) // pelo menos algum diferente de 0
+
+
+05.) Projetar e descrever em Verilog, usando portas nativas,
+uma unidade lógica (LU) com um módulo para calcular
+o complemento de 2 de um valor binário com 06 bits.
+O nome do arquivo deverá ser Guia_0805.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+DICA: Construir um subcircuito para calcular
+ o complemento de 1 e
+ usar um somador completo.
+
+
+ ___________________________________ 
+|   |  now  |   |   C1  |   |   C2  |
+| m | a b c | x | a b c | x | a b c |
+|---|-------|---|-------|---|-------|
+| 0 | 0 0 0 |   | 1 1 1 |  1| 0 0 0 |
+| 1 | 0 0 1 |   | 1 1 0 |   | 1 1 1 |
+| 2 | 0 1 0 |   | 1 0 1 |   | 1 1 0 |
+| 3 | 0 1 1 |   | 1 0 0 |   | 1 0 1 |
+| 4 | 1 0 0 |   | 0 1 1 |   | 1 0 0 |
+| 5 | 1 0 1 |   | 0 1 0 |   | 0 1 1 |
+| 6 | 1 1 0 |   | 0 0 1 |   | 0 1 0 |
+| 7 | 1 1 1 |   | 0 0 0 |   | 0 0 1 |
+|___|_______|___|_______|___|_______|
+
+
+
+EXTRAS:
+
+06.) Projetar e descrever em Verilog, usando portas nativas,
+uma unidade aritmética (AU) com um somador algébrico
+(somador completo com uma das entradas invertida,
+caso seja escolhida a subtração, conforme seleção
+pela entrada carryIn do primeiro subcircuito
+(soma=carryIn=0; subtração=carryIn=1),
+para calcular simultaneamente a igualdade e a desigualdade,
+para 06 bits (sinal=1+amplitude=5),
+e selecionar o resultado por uma segunda entrada extra (chave).
+O nome do arquivo deverá ser Guia_0806.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+DICA: Usar o subcircuito para calcular
+ o complemento de 1 condicionado à seleção.
+
+
+07.) Projetar e descrever em Verilog, usando portas nativas,
+uma unidade lógica (LU) com um comparador
+para calcular simultaneamente a igualdade (=0) ou a desigualdade (=1),
+para 06 bits (sinal=1+amplitude=5), e
+selecionar o resultado por uma entrada extra (chave).
+O nome do arquivo deverá ser Guia_0807.v,
+e poderá seguir o modelo descrito anteriormente.
+Incluir previsão de testes.
+Simular o módulo no Logisim e
+apresentar layout do circuito e subcircuitos.
+DICA: Usar como referência os subcircuitos 03 e 04 acima

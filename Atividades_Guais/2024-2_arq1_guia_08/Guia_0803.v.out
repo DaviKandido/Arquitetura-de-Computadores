@@ -1,0 +1,161 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55a586734ac0 .scope module, "test_fullSubtractor" "test_fullSubtractor" 2 43;
+ .timescale 0 0;
+v0x55a586765fd0_0 .net "Result_out", 0 0, L_0x55a586767190;  1 drivers
+v0x55a586766070_0 .var "x", 4 0;
+v0x55a586766140_0 .var "y", 4 0;
+S_0x55a5867371c0 .scope module, "FS0" "ComparadorCompleto_5bits" 2 51, 2 24 0, S_0x55a586734ac0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Result_out";
+    .port_info 1 /INPUT 5 "a";
+    .port_info 2 /INPUT 5 "b";
+L_0x55a586767190/0/0 .functor AND 1, L_0x55a586767250, L_0x55a586767400, L_0x55a5867674f0, L_0x55a5867676f0;
+L_0x55a586767190/0/4 .functor AND 1, L_0x55a586767790, C4<1>, C4<1>, C4<1>;
+L_0x55a586767190 .functor AND 1, L_0x55a586767190/0/0, L_0x55a586767190/0/4, C4<1>, C4<1>;
+v0x55a586765730_0 .net "Result", 4 0, L_0x55a586766d40;  1 drivers
+v0x55a586765810_0 .net "Result_out", 0 0, L_0x55a586767190;  alias, 1 drivers
+v0x55a5867658d0_0 .net *"_ivl_32", 0 0, L_0x55a586767250;  1 drivers
+v0x55a5867659c0_0 .net *"_ivl_34", 0 0, L_0x55a586767400;  1 drivers
+v0x55a586765aa0_0 .net *"_ivl_36", 0 0, L_0x55a5867674f0;  1 drivers
+v0x55a586765bd0_0 .net *"_ivl_38", 0 0, L_0x55a5867676f0;  1 drivers
+v0x55a586765cb0_0 .net *"_ivl_40", 0 0, L_0x55a586767790;  1 drivers
+v0x55a586765d90_0 .net "a", 4 0, v0x55a586766070_0;  1 drivers
+v0x55a586765e70_0 .net "b", 4 0, v0x55a586766140_0;  1 drivers
+L_0x55a5867662d0 .part v0x55a586766070_0, 0, 1;
+L_0x55a5867663c0 .part v0x55a586766140_0, 0, 1;
+L_0x55a586766570 .part v0x55a586766070_0, 1, 1;
+L_0x55a586766660 .part v0x55a586766140_0, 1, 1;
+L_0x55a5867667f0 .part v0x55a586766070_0, 2, 1;
+L_0x55a5867668e0 .part v0x55a586766140_0, 2, 1;
+L_0x55a586766ac0 .part v0x55a586766070_0, 3, 1;
+L_0x55a586766b60 .part v0x55a586766140_0, 3, 1;
+LS_0x55a586766d40_0_0 .concat8 [ 1 1 1 1], L_0x55a5867394c0, L_0x55a586766500, L_0x55a586766780, L_0x55a586766a50;
+LS_0x55a586766d40_0_4 .concat8 [ 1 0 0 0], L_0x55a586766ca0;
+L_0x55a586766d40 .concat8 [ 4 1 0 0], LS_0x55a586766d40_0_0, LS_0x55a586766d40_0_4;
+L_0x55a586766fa0 .part v0x55a586766070_0, 4, 1;
+L_0x55a5867670f0 .part v0x55a586766140_0, 4, 1;
+L_0x55a586767250 .part L_0x55a586766d40, 0, 1;
+L_0x55a586767400 .part L_0x55a586766d40, 1, 1;
+L_0x55a5867674f0 .part L_0x55a586766d40, 2, 1;
+L_0x55a5867676f0 .part L_0x55a586766d40, 3, 1;
+L_0x55a586767790 .part L_0x55a586766d40, 4, 1;
+S_0x55a586739910 .scope module, "FS0" "ComparadorComun" 2 28, 2 15 0, S_0x55a5867371c0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Result";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x55a5867394c0 .functor XNOR 1, L_0x55a5867662d0, L_0x55a5867663c0, C4<0>, C4<0>;
+v0x55a5867353f0_0 .net "Result", 0 0, L_0x55a5867394c0;  1 drivers
+v0x55a586764160_0 .net "a", 0 0, L_0x55a5867662d0;  1 drivers
+v0x55a586764220_0 .net "b", 0 0, L_0x55a5867663c0;  1 drivers
+S_0x55a586764340 .scope module, "FS1" "ComparadorComun" 2 29, 2 15 0, S_0x55a5867371c0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Result";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x55a586766500 .functor XNOR 1, L_0x55a586766570, L_0x55a586766660, C4<0>, C4<0>;
+v0x55a586764570_0 .net "Result", 0 0, L_0x55a586766500;  1 drivers
+v0x55a586764650_0 .net "a", 0 0, L_0x55a586766570;  1 drivers
+v0x55a586764710_0 .net "b", 0 0, L_0x55a586766660;  1 drivers
+S_0x55a586764830 .scope module, "FS2" "ComparadorComun" 2 30, 2 15 0, S_0x55a5867371c0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Result";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x55a586766780 .functor XNOR 1, L_0x55a5867667f0, L_0x55a5867668e0, C4<0>, C4<0>;
+v0x55a586764a60_0 .net "Result", 0 0, L_0x55a586766780;  1 drivers
+v0x55a586764b20_0 .net "a", 0 0, L_0x55a5867667f0;  1 drivers
+v0x55a586764be0_0 .net "b", 0 0, L_0x55a5867668e0;  1 drivers
+S_0x55a586764d00 .scope module, "FS3" "ComparadorComun" 2 31, 2 15 0, S_0x55a5867371c0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Result";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x55a586766a50 .functor XNOR 1, L_0x55a586766ac0, L_0x55a586766b60, C4<0>, C4<0>;
+v0x55a586764f30_0 .net "Result", 0 0, L_0x55a586766a50;  1 drivers
+v0x55a586765010_0 .net "a", 0 0, L_0x55a586766ac0;  1 drivers
+v0x55a5867650d0_0 .net "b", 0 0, L_0x55a586766b60;  1 drivers
+S_0x55a5867651f0 .scope module, "FS4" "ComparadorComun" 2 32, 2 15 0, S_0x55a5867371c0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Result";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x55a586766ca0 .functor XNOR 1, L_0x55a586766fa0, L_0x55a5867670f0, C4<0>, C4<0>;
+v0x55a586765470_0 .net "Result", 0 0, L_0x55a586766ca0;  1 drivers
+v0x55a586765550_0 .net "a", 0 0, L_0x55a586766fa0;  1 drivers
+v0x55a586765610_0 .net "b", 0 0, L_0x55a5867670f0;  1 drivers
+    .scope S_0x55a586734ac0;
+T_0 ;
+    %vpi_call 2 56 "$display", "Guia_0803 - Davi C\303\242ndido de Almeida - 857859" {0 0 0};
+    %vpi_call 2 57 "$display", "Test ComparadorCompleto_5bits" {0 0 0};
+    %pushi/vec4 10, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 5, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %vpi_call 2 64 "$monitor", "x = %b, y = %b, Result = %b", v0x55a586766070_0, v0x55a586766140_0, v0x55a586765fd0_0 {0 0 0};
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 1, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 2, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 1, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 3, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 3, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 4, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 4, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 5, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 2, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 8, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 4, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 1, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %delay 1, 0;
+    %pushi/vec4 12, 0, 5;
+    %store/vec4 v0x55a586766070_0, 0, 5;
+    %pushi/vec4 12, 0, 5;
+    %store/vec4 v0x55a586766140_0, 0, 5;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0803.v";
