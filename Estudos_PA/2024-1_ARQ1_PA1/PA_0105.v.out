@@ -1,0 +1,71 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55b51a725d10 .scope module, "PA_0105" "PA_0105" 2 26;
+ .timescale 0 0;
+v0x55b51a738210_0 .var "a", 0 0;
+v0x55b51a7382b0_0 .var "b", 0 0;
+v0x55b51a738380_0 .net "s", 0 0, L_0x55b51a738810;  1 drivers
+S_0x55b51a725ea0 .scope module, "f01a" "f" 2 32, 2 11 0, S_0x55b51a725d10;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x55b51a738480 .functor NOT 1, v0x55b51a738210_0, C4<0>, C4<0>, C4<0>;
+L_0x55b51a738570 .functor NOT 1, v0x55b51a7382b0_0, C4<0>, C4<0>, C4<0>;
+L_0x55b51a738630 .functor XOR 1, v0x55b51a738210_0, v0x55b51a7382b0_0, C4<0>, C4<0>;
+L_0x55b51a7386a0 .functor NOR 1, L_0x55b51a738480, L_0x55b51a738570, C4<0>, C4<0>;
+L_0x55b51a738810 .functor NAND 1, L_0x55b51a738630, L_0x55b51a7386a0, C4<1>, C4<1>;
+v0x55b51a726080_0 .net "a", 0 0, v0x55b51a738210_0;  1 drivers
+v0x55b51a737b00_0 .net "b", 0 0, v0x55b51a7382b0_0;  1 drivers
+v0x55b51a737bc0_0 .net "not_a", 0 0, L_0x55b51a738480;  1 drivers
+v0x55b51a737c60_0 .net "not_b", 0 0, L_0x55b51a738570;  1 drivers
+v0x55b51a737d20_0 .net "s", 0 0, L_0x55b51a738810;  alias, 1 drivers
+v0x55b51a737e30_0 .net "w1", 0 0, L_0x55b51a738630;  1 drivers
+v0x55b51a737ef0_0 .net "w2", 0 0, L_0x55b51a7386a0;  1 drivers
+S_0x55b51a738030 .scope begin, "main" "main" 2 35, 2 35 0, S_0x55b51a725d10;
+ .timescale 0 0;
+    .scope S_0x55b51a725d10;
+T_0 ;
+    %fork t_1, S_0x55b51a738030;
+    %jmp t_0;
+    .scope S_0x55b51a738030;
+t_1 ;
+    %vpi_call 2 36 "$display", "PA_0105 - Tests" {0 0 0};
+    %vpi_call 2 38 "$display", "   a    b    s" {0 0 0};
+    %vpi_call 2 39 "$monitor", "%4b %4b %4b", v0x55b51a738210_0, v0x55b51a7382b0_0, v0x55b51a738380_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55b51a738210_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55b51a7382b0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55b51a738210_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55b51a7382b0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55b51a738210_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55b51a7382b0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55b51a738210_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55b51a7382b0_0, 0, 1;
+    %end;
+    .scope S_0x55b51a725d10;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "PA_0105.v";

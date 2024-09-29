@@ -1,0 +1,85 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55c76cc64fe0 .scope module, "Guia_0905" "Guia_0905" 2 72;
+ .timescale 0 0;
+v0x55c76cc78d80_0 .net "clock", 0 0, v0x55c76cc2dba0_0;  1 drivers
+v0x55c76cc78e70_0 .net "p1_0901", 0 0, v0x55c76cc78860_0;  1 drivers
+v0x55c76cc78f80_0 .net "p2_0905", 0 0, v0x55c76cc78b90_0;  1 drivers
+S_0x55c76cc65170 .scope module, "clk" "clock" 2 74, 2 29 0, S_0x55c76cc64fe0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "clk";
+v0x55c76cc2dba0_0 .var "clk", 0 0;
+S_0x55c76cc78580 .scope module, "pls1" "pulse0901" 2 77, 2 41 0, S_0x55c76cc64fe0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "signal";
+    .port_info 1 /INPUT 1 "clock";
+v0x55c76cc787a0_0 .net "clock", 0 0, v0x55c76cc2dba0_0;  alias, 1 drivers
+v0x55c76cc78860_0 .var "signal", 0 0;
+E_0x55c76cc68c20 .event edge, v0x55c76cc2dba0_0;
+S_0x55c76cc78960 .scope module, "pls5" "pulse0905" 2 80, 2 55 0, S_0x55c76cc64fe0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "signal";
+    .port_info 1 /INPUT 1 "signal0901";
+v0x55c76cc78b90_0 .var "signal", 0 0;
+v0x55c76cc78c70_0 .net "signal0901", 0 0, v0x55c76cc78860_0;  alias, 1 drivers
+E_0x55c76cc52d30 .event posedge, v0x55c76cc78860_0;
+    .scope S_0x55c76cc65170;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55c76cc2dba0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x55c76cc65170;
+T_1 ;
+    %delay 12, 0;
+    %load/vec4 v0x55c76cc2dba0_0;
+    %inv;
+    %store/vec4 v0x55c76cc2dba0_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x55c76cc78580;
+T_2 ;
+    %wait E_0x55c76cc68c20;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55c76cc78860_0, 0, 1;
+    %delay 3, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55c76cc78860_0, 0, 1;
+    %delay 3, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55c76cc78860_0, 0, 1;
+    %delay 3, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55c76cc78860_0, 0, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_0x55c76cc78960;
+T_3 ;
+    %wait E_0x55c76cc52d30;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55c76cc78b90_0, 0, 1;
+    %delay 4, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55c76cc78b90_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x55c76cc64fe0;
+T_4 ;
+    %vpi_call 2 84 "$dumpfile", " Guia_0905.vcd" {0 0 0};
+    %vpi_call 2 85 "$dumpvars", 32'sb00000000000000000000000000000001, v0x55c76cc78d80_0, v0x55c76cc78e70_0, v0x55c76cc78f80_0 {0 0 0};
+    %delay 480, 0;
+    %vpi_call 2 86 "$finish" {0 0 0};
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0905.v";

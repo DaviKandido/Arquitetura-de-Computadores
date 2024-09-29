@@ -1,0 +1,213 @@
+/*
+    identificação: 
+
+PA_01 - 26 / 09 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+,
+
+01.) Dada tabela-verdade e o mapa de Veitch-Karnaugh abaixo:
+
+
+ ____________________________________ 
+| n |    m    |    M    | f(a,b,c,d) |
+|---|---------|---------|------------|
+| 0 | a'b'c'd'| A B C D |     0      | 
+| 1 | a'b'c'd | A B C D'|     0      | 
+| 2 | a'b'c d'| A B C'D |     1      |
+| 3 | a'b'c d | A B C'D'|     0      |
+| 4 | a'b c'd'| A B'C D |     1      |
+| 5 | a'b c'd | A B'C D'|     0      |
+| 6 | a'b c d'| A B'C'D |     0      |
+| 7 | a'b c d | A B'C'D'|     1      |
+| 8 | a b'c'd'| A'B C D |     0      |
+| 9 | a b'c'd | A'B C D'|     0      |
+| A | a b'c d'| A'B C'D |     0      |
+| B | a b'c d | A'B C'D'|     1      |
+| C | a b c'd'| A'B'C D |     1      |
+| D | a b c'd | A'B'C D'|     0      |
+| E | a b c d'| A'B'C'D |     0      |
+| F | a b c d | A'B'C'D'|     0      |
+|___|_________|_________|____________|
+
+
+           mintermos
+ ___________________________ 
+| ab\cd | 00 | 01 | 11 | 10 |
+|-------|----|----|----|----|
+| 00    |    |    |    |  1 |
+|-------|----|----|----|----|
+| 01    |    |    |  1 |    |
+|-------|----|----|----|----|
+| 11    |  1 |    |    |    |
+|-------|----|----|----|----|
+| 10    |    |    |  1 |    |
+|_______|____|____|____|____|
+
+           MAXTERMOS
+ ___________________________ 
+| AB\CD | 00 | 01 | 11 | 10 |
+|-------|----|----|----|----|
+| 00    |  0 |  0 |  0 |    |
+|-------|----|----|----|----|
+| 01    |  0 |  0 |    | 0  |
+|-------|----|----|----|----|
+| 11    |    |  0 |  0 | 0  |
+|-------|----|----|----|----|
+| 10    |  0 |  0 |    | 0  |
+|_______|____|____|____|____|
+
+                    
+                                        mintermos
+_______________________________________________________________10____11____12____13____14____15_ 
+|  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|     |     |  1  |     |  1  |     |     |  1  |     |     |     |  1  |  1  |     |     |     |
+|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+
+
+                                        MAXTERMOS
+________________________________________________________________________________________________ 
+|  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|  0  |  0  |     |  0  |     |  0  |  0  |     |  0  |  0  |  0  |     |     |  0  |  0  |  0  |
+|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+
+
+a.) expressão canônica para SoP(a,b,c,d)
+
+
+    SoP(a,b,c,d) =  ∑ m ( 2,4,7,B,C ) =  a'•b'•c•d' + a'•b•c•d + a•b'•c•d + a•b•c'•d'
+
+
+b.) expressão canônica para PoS(A,B,C,D)
+
+
+    PoS(A,B,C,D) = π M ( 0, 1, 3, 5, 6, 8, 9, A, D, E, F ) = A+B+C+D • A+B+C+D' • A+B+C'+D' • A+B'+C+D' • A+B'+C'+D • A'+B+C+D • A'+B+C+D' • A'+B+C'+D' • A'+B'+C+D' • A'+B'+C'+D • A'+B'+C'+D'
+
+
+c.) simplificação de mintermos pelo mapa de Veitch-Karnaugh
+
+        - Não é possivel simplificação de mintermos pelo mepa de Karnaugh devido a não ter termos com DH = 1
+
+        SoP(a,b,c,d) =  ∑ m ( 2,4,7,B,C ) =  a'•b'•c•d' + a'•b•c•d + a•b'•c•d + a•b•c'•d'
+
+d.) simplificação de MAXTERMOS pelo mapa de Veitch-Karnaugh
+
+    PoS(A,B,C,D) = π M ( 0, 1, 3, 5, 6, 8, 9, A, D, E, F ) = A+B+C+D • A+B+C+D' • A+B+C'+D' • A+B'+C+D' • A+B'+C'+D • A'+B+C+D • A'+B+C+D' • A'+B+C'+D' • A'+B'+C+D' • A'+B'+C'+D • A'+B'+C'+D'
+
+    Simplificação:
+    PoS(A,B,C,D) = π M ( 0, 1, 3, 5, 6, 8, 9, A, D, E, F ) = A+B • A+B+D' • A+B'+D • A'+B'+D' • A'+B'+C' • A'+C'+D • A'B+C
+
+                                                           = A+B • A+B+D' • A+B'+D • A'+B'+D' • A'+B' • (D+C') • A'B+C
+
+
+e.) expressão SoP equivalente com portas NAND (usar dupla negação)
+
+        ((a'•b'•c•d' + a'•b•c•d + a•b'•c•d + a•b•c'•d')')'
+
+      = ((a'•b'•c•d' + a'•b•c•d + a•b'•c•d + a•b•c'•d')')'
+
+      = ((a'•b'•c•d')' • (a'•b•c•d)' • (a•b'•c•d)' • (a•b•c'•d')')'
+
+      = (((a•a)'•(b•b)'•c•d')' • ((a•a)'•b•c•d)' • (a•(b•b)'•c•d)' • (a•b•(c•c)'•(d•d)')')'
+
+
+f .) expressão PoS equivalente com portas NOR (usar dupla negação)
+
+      ((A+B • A+B+D' • A+B'+D • A'+B'+D' • A'+B' • (D+C') • A'B+C)')'
+
+    = ((A+B)' • (A+B+D')' • (A+B'+D)' • (A'+B'+D')' • (A'+B')' • (D+C')' • (A'B+C)')'
+
+    = ((A+B)' • (A+B+(D+D)')' • (A+(B+B)'+D)' • ((A+A)'+(B+B)'+(D+D)')' • ((A+A)'+(B+B)')' • (D+(C+C)')' • ((A+A)'B+C)')'
+
+
+02.) Implementar e testar a função lógica descrita em Verilog e no Logisim para obter
+a tabela-verdade:
+
+    module f ( output s, input x, input y );
+    wire w1, w2, w3, w4, w5;
+    not NOT_1 (w1, x);
+    not NOT_2 (w2, y);
+    and OR__1 (w3, y, w1);
+    or OR__2 (w4, w2, x);
+    not NOT_3 (w5, w4);
+    and AND_1 (s, w3, w5);
+    endmodule // s = f (x,y)
+
+
+  -Saídas de resultados:
+    PA_0102 - Tests
+    x    y    s
+    0    0    0
+    0    1    1
+    1    0    0
+    1    1    0
+
+
+
+03.) Implementar no Verilog e no Logisim a expressão abaixo para obter
+a tabela verdade:
+DICA: Usar MUX(a,b,chave). Se chave=0, (a); senão, (b).
+MUX ( MUX(b,a,c), MUX(NOT(a),NOT(b),c), NOT(c) )
+
+
+  -Saídas de resultados:
+
+    PA_0103 - Tests
+    a    b    c    s
+    0    0    0    1
+    0    1    0    1
+    1    0    0    0
+    1    1    0    0
+    0    0    1    0
+    0    1    1    0
+    1    0    1    1
+    1    1    1    1
+
+04.) Dado o valor negativo, já em complemento de 2, 2310(4) , com 01 byte de representação,
+encontrar a soma binária desse valor com 56 (8) .Completar com zeros, se necessário.
+ em complemento
+
+    (Negativo em complemento de 2 ) -> 2310(4)
+    (Soma com)                      ->   56(8)
+
+    2310(4) = 10110100(2)
+      56(8) =   101110(2)
+       |
+       '-->   00101110(2)
+
+        
+        Como já esta em complemento de 2 basta fazer uma soma comum, o 1 sobressalente indicara sinal:
+
+            1
+        10110100(2)
+       +00101110(2)
+      ---------------
+        11100010(2)     
+            |
+            '-->  (1) 1100010(2)  
+                  Bite de representação        
+
+
+
+
+05.) Implementar no Verilog e no Logisim a expressão abaixo para obter
+a expressão por mintermos equivalente:
+NAND (XOR (a, b), NOR (NOT(a),NOT (b)))
+
+
+    PA_0105 - Tests
+    a    b    s
+    0    0    1
+    0    1    1
+    1    0    1
+    1    1    1
+
+    //O resultado final será sempre 1 pq nunca será possivel ter uma XOR e uma NOR com ambos resultados
+    //igual a 1 para satisfazer a condição necessário para a nand resultar em 0
+
