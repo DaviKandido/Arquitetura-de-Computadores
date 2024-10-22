@@ -1,0 +1,73 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55dd833062d0 .scope module, "R0105" "R0105" 2 29;
+ .timescale 0 0;
+v0x55dd83319090_0 .var "a", 0 0;
+v0x55dd83319130_0 .var "b", 0 0;
+v0x55dd83319200_0 .net "s", 0 0, L_0x55dd83319700;  1 drivers
+S_0x55dd83306460 .scope module, "f01a" "f" 2 35, 2 12 0, S_0x55dd833062d0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0x55dd83319300 .functor NOT 1, v0x55dd83319090_0, C4<0>, C4<0>, C4<0>;
+L_0x55dd833193f0 .functor NOT 1, v0x55dd83319130_0, C4<0>, C4<0>, C4<0>;
+L_0x55dd833194b0 .functor NOR 1, v0x55dd83319090_0, L_0x55dd833193f0, C4<0>, C4<0>;
+L_0x55dd83319570 .functor XOR 1, v0x55dd83319090_0, v0x55dd83319130_0, C4<0>, C4<0>;
+L_0x55dd83319610 .functor NAND 1, L_0x55dd833194b0, L_0x55dd83319570, C4<1>, C4<1>;
+L_0x55dd83319700 .functor NOT 1, L_0x55dd83319610, C4<0>, C4<0>, C4<0>;
+v0x55dd83306640_0 .net "a", 0 0, v0x55dd83319090_0;  1 drivers
+v0x55dd833188c0_0 .net "b", 0 0, v0x55dd83319130_0;  1 drivers
+v0x55dd83318980_0 .net "nand1", 0 0, L_0x55dd83319610;  1 drivers
+v0x55dd83318a20_0 .net "nor1", 0 0, L_0x55dd833194b0;  1 drivers
+v0x55dd83318ae0_0 .net "not_a", 0 0, L_0x55dd83319300;  1 drivers
+v0x55dd83318bf0_0 .net "not_b", 0 0, L_0x55dd833193f0;  1 drivers
+v0x55dd83318cb0_0 .net "s", 0 0, L_0x55dd83319700;  alias, 1 drivers
+v0x55dd83318d70_0 .net "xor1", 0 0, L_0x55dd83319570;  1 drivers
+S_0x55dd83318eb0 .scope begin, "main" "main" 2 38, 2 38 0, S_0x55dd833062d0;
+ .timescale 0 0;
+    .scope S_0x55dd833062d0;
+T_0 ;
+    %fork t_1, S_0x55dd83318eb0;
+    %jmp t_0;
+    .scope S_0x55dd83318eb0;
+t_1 ;
+    %vpi_call 2 39 "$display", "R0105 - Tests" {0 0 0};
+    %vpi_call 2 41 "$display", "   a    b    sB" {0 0 0};
+    %vpi_call 2 42 "$monitor", "%4b %4b %4b", v0x55dd83319090_0, v0x55dd83319130_0, v0x55dd83319200_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dd83319090_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dd83319130_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dd83319090_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55dd83319130_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55dd83319090_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dd83319130_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55dd83319090_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55dd83319130_0, 0, 1;
+    %end;
+    .scope S_0x55dd833062d0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "R0105.v";

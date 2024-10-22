@@ -1,0 +1,267 @@
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+OBS: Quadros e Figuras disponiveis no pdf e documentos relacionados a produção
+do artigo em LaTex.
+
+Resumo
+O presente artigo explora a utilização de Dispositivos Lógicos Programáveis Complexos
+(CPLDs) na automação industrial, destacando seu papel na otimização de processos e na
+redução de custos de produção. Com o crescente avanço das tecnologias eletrônicas, os
+CPLDs surgem como uma alternativa versátil aos Controladores Lógicos Programáveis tra-
+dicionais, oferecendo interfaces amigáveis e a capacidade de reconfiguração. O estudos
+analisados se propõe a analisar e descrever conceitos da literatura acadêmica sobre CPLDs,
+visando entender suas aplicações industriais, benefícios e terminologias associadas. O ar-
+tigo aborda a evolução dos circuitos digitais, destacando a importância de tecnologias como
+ASICs, ASSPs e FPGAs, PROMs, PLAs e PALs. Os CPLDs são apresentados como uma
+solução flexível e eficiente, capaz de atender às necessidades de inovação tecnológica em
+diversos setores, permitindo a adaptação rápida a novas demandas. Assim, o presente tra-
+balho busca a construção de uma base sólida de conhecimento sobre o funcionamento e as
+aplicações dos CPLDs, ressaltando sua relevância na automação industrial moderna.
+Palavras-chave: CPLDs; FPGA; PROM; PLA; PAL.
+
+
+Abstract
+The present article explores the use of Complex Programmable Logic Devices (CPLDs) in
+industrial automation, highlighting their role in process optimization and production cost
+reduction. With the ongoing advancement of electronic technologies, CPLDs emerge as a
+versatile alternative to traditional Programmable Logic Controllers, offering user-friendly
+interfaces and reconﬁgurability. The studies reviewed aim to analyze and describe academic
+literature on CPLDs, with the goal of understanding their industrial applications, beneﬁts,
+and associated terminologies. The article discusses the evolution of digital circuits, empha-
+sizing the importance of technologies such as ASICs, ASSPs, FPGAs, PROMs, PLAs, and
+PALs. CPLDs are presented as a ﬂexible and efﬁcient solution capable of meeting techno-
+logical innovation needs across various sectors, allowing for quick adaptation to new de-
+mands. Thus, this work seeks to build a solid foundation of knowledge on the functionality
+and applications of CPLDs, highlighting their relevance in modern industrial automation.
+Palavras-chave: CPLDs; FPGA; PROM; PLA; PAL.
+
+
+1 INTRODUÇÃO
+Indústrias de diversos segmentos buscam constantemente a redução de custos de produ-
+ção, bem como alternativas para facilitar o gerenciamento e otimizar seus processos. Portanto,
+o desenvolvimento de novas tecnologias alternativas se apresenta como uma chance da redução
+e otimização de todo o seu processo logístico. Em meio a isso, os CLPS (Dispositivos de lógica
+Programável Complexa) se apresentam como uma alternativa promissora para além de reduzir
+custos, também facilitar a sua própria utilização, a partir de interfaces mais amigáveis e o uso
+de linguagens modernas, sendo a alta durabilidade e versatilidade qualidades também alcan-
+çada por estes dispositivos em comparação com os clássicos Controlador lógico Programável
+ou CLP (Freitas; Pasqualino; Leão, 2005)
+
+A crescente evolução do mercado de circuitos eletrônicos é visível. Um exem-
+plo para esta aﬁrmação é o mercado mundial, inﬂuenciado drasticamente pela
+produção de componentes eletrônicos. Porém, muitos autores citam que a ver-
+dadeira virada no mercado eletrônico do século XX foi a criação dos circui-
+tos de aplicação especíﬁca e o aperfeiçoamento do hardware reconﬁgurável
+dos Dispositivos Lógicos Programáveis (Programmable Logic Device - PLD)
+(Oliveira; Aguiar; Fontanini, 2011, 25).
+
+Tratando-se de uma tecnologia nova sua utilização abre portas para o desenvolvimento
+de novas aplicações em automação industrial, no qual será explorado e analisado neste artigo,
+e com isso buscar a construção de uma base sólida de entendimento sobre seu funcionamento e
+aplicações.
+
+2 OBJETIVO
+Analisar artigos e produções acadêmicas sobre CLPDs, buscando contribuir para o en-
+tendimento de suas aplicações industriais, bem como de seus benefícios e terminologias en-
+volvidas, visando construir uma base sólida de conhecimento através da mescla dos recentes
+conhecimentos obtidos através de estudos em arquitetura de computadores, como circuitos ló-
+gicos combinacionais e sequenciais, com o entendimento de suas aplicações na indústria.
+
+2.1 Justiﬁcativa
+As tecnologias envolvidas em dispositivos CPLD (Complex Programmable Logic De-
+vices) abrangem amplamente conceitos de circuitos e portas lógicas, fundamentais em áreas
+como informática e equipamentos industriais. Elas também se integram a noções trabalhadas
+nas disciplinas de arquitetura de computadores, com foco na reconﬁguração de hardware e oti-
+mização de custos lógicos e processuais. Portanto, por ser um dispositivo lógico programável
+que prioriza a redução das relações custo-benefício, seu estudo se apresenta como uma oportu-
+nidade valiosa para compreender e explorar soluções de hardware que oferecem ﬂexibilidade,
+eﬁciência e escalabilidade. Além disso, o CPLD permite o desenvolvimento de sistemas que
+podem ser rapidamente adaptados a novas necessidades, tornando-se uma ferramenta essencial
+para a inovação tecnológica em diversos setores.
+
+3 TECNOLOGIAS DOS DISPOSITIVOS LÓGICOS PROGRAMÁVEIS
+
+3.1 Os Circuitos Digitais
+Durante as últimas décadas projetos de hardware e todos os seus processos envolvidos
+vem passando por constante transformações, as quais impactam de forma benéﬁca equipamen-
+tos como controladores usados em automação muito devido a seus circuitos digitais que através
+dessas mudanças possibilitam a criação de novas vertentes e tendências de projeto (Freitas;
+Pasqualino; Leão, 2005)
+
+Os avanços nos circuitos digitais permitem a criação de novas tendências de
+projetos que impactam positivamente o desenvolvimento de controladores para
+automação (Oliveira; Aguiar; Fontanini, 2011, 25).
+
+3.2 Tecnologias para Projeto de Sistemas Digitais
+Cada projeto de circuito integrado tende a exigir tecnologias especíﬁcas as quais são
+ideais para a execução da aplicação pretendida, para isso a escolha de tecnologia ideal é se
+torna uma parte essencial do projeto. Abaixo se encontra uma ﬁgura retirada do artigo “O
+CPLD (Dispositivo Complexo de Lógica Programação aplicado em automação industrial)” feito
+por Tiago Freitas, Thiago Pasqualinoto e Juliano Leão que busca explicar esse agrupamento de
+categorias de projetos.
+
+Figura 1 – Tecnologias para projetos de sistemas digitais
+Fonte: Freitas, Pasqualino e Leão (2005)
+
+
+3.2.1 ASICs (Application-Speciﬁc Integrated Circuit ou IC)
+ASISCs ou também conhecidos como IC envolve um alto custo de fabricação, principal-
+mente devido a sua necessidade de uma fabricação especial a depender de cada projeto, apesar
+de que em projetos de grande escalas esse custo tende a ser amortizado.
+Os circuitos integrados digitais implementados em pastilha de silício podem
+ser classiﬁcados como circuitos digitais padrão ou circuitos digitais de aplica-
+ções especíﬁcas ASICs (Aplication Speciﬁc Integrated Circuits). Os circuitos
+padrões são constituídos por portas lógicas (AND,OR,NOT e Flip – Flops) e
+necessitam de vários componentes externos para a realização de uma função
+especíﬁca. Os circuitos integrados ASICs são aqueles que precisam de um pro-
+cesso de fabricação especial, que requer máscaras especíﬁcas para cada pro-
+jeto. Outra característica dos circuitos integrados ASICs é o tempo de desen-
+volvimento longo e os custos extremamente altos. Geralmente não necessitam
+de muitos componentes externos para a realização de uma função especíﬁca,
+pois sua alta densidade os torna aptos para a implementação de vários tipos de
+aplicação. Em ambos os casos, os circuitos integrados digitais possuem suas
+funções internas predeﬁnidas, implementadas na sua construção no processo
+de fabricação (Oliveira; Aguiar; Fontanini, 2011, 25).
+
+3.2.2 SPLD (Simple Programmable Logic Device):
+Os SPLD se caracterizam por serem dispositivos lógicos programáveis simples, no en-
+tanto com menor capacidade lógica em comparação com aos CPLDs e FPGAs, sendo aplicáveis
+apenas em circuitos lógicos básicos, tendo também como benefício a capacidade de serem re-
+conﬁguráveis o que permite modiﬁcações durante o desenvolvimento de projetos e consequen-
+temente uma redução dos custos quando se comparado a projetos feitos com outras tecnologias
+(Freitas; Pasqualino; Leão, 2005)
+
+Segundo a Universidade de São Paulo (2021), "os SPLDs são frequentemente
+compostos por estruturas como portas lógicas programáveis (AND, OR, NOT)
+e ﬂip-ﬂops, e têm sido amplamente usados para realizar funções lógicas sim-
+ples em sistemas embarcados. Esses dispositivos estão se tornando obsoletos
+devido ao surgimento de tecnologias mais avançadas, como os CPLDs e FP-
+GAs, que oferecem maior ﬂexibilidade e capacidade de integração". (USP,
+2021, 25).
+
+3.2.3 SOC (System on Chip)
+Caracterizado por “combinar” todos os componentes de um sistema eletrônico em um
+único chip, como CPU, memória, interface de entrada/saída, entre outros periféricos. Devido a
+uma alta integração e eﬁciência energética se torna uma ótima opção para dispositivos móveis
+e eletrônicos
+
+3.2.4 FPGA (Field Programmable Gate Array)
+Diferentemente dos ASISCs os FPGAs possuem como características principais a ﬂe-
+xibilidade e capacidade de prototipagem rápida, possuindo em sua estrutura milhões de blocos
+lógicos conﬁguráveis, ideias para sistemas que exigem modiﬁcações frequentes principalmente
+em aplicações de computação acelerada, como processamento de sinais. (Rao, 2023)
+Segundo a Universidade de São Paulo (2021), "os SPLDs são frequentemente
+compostos por estruturas como portas lógicas programáveis (AND, OR, NOT)
+e ﬂip-ﬂops, e têm sido amplamente usados para realizar funções lógicas sim-
+ples em sistemas embarcados. Esses dispositivos estão se tornando obsoletos
+devido ao surgimento de tecnologias mais avançadas, como os CPLDs e FP-
+GAs, que oferecem maior ﬂexibilidade e capacidade de integração". (Rao,
+2023, 25).
+
+4 EVOLUÇÃO DOS DISPOSITIVOS LÓGICOS PROGRAMÁVEIS
+
+4.1 Os Primeiros Dispositivos lógicos Programáveis
+
+4.1.1 PROM (Programmable read-only memory)
+Os PROMs se caracterizam por trazer consigo a possibilidade de ser programável pelo
+usuário, podendo criar uma customização de circuitos lógicos. Nesse contexto, as linhas de
+endereço serviam como entradas, enquanto as linhas de dados funcionavam como saídas. Além
+disso, as funções lógicas geralmente não exigem mais do que alguns termos de produto, e cada
+PROM inclui um decodiﬁcador que gerencia seus endereços de entrada. Contudo, as PROMs
+revelaram-se como uma solução ineﬁciente para a implementação de circuitos lógicos e são
+raramente utilizadas atualmente (Aragão, 1998)
+
+4.1.2 PAL (Programmable Array Logic)
+Buscando superar as deﬁciências nos PLAs os PAL trouxeram consigo tecnologias de
+apenas um único nível de programação, e com isso baixos custos e melhor desempenho. Sua
+arquitetura envolve um plano de portas AND programáveis, que plano OR ﬁxo, abaixo se en-
+contra uma uma ﬁgura de um exemplo simpliﬁcado de uma PAL retirada do artigo “O CPLD
+(Dispositivo Complexo de Lógica Programação aplicado em automação industrial)” feito por
+Tiago Freitas, Thiago Pasqualinoto e Juliano Leão (Freitas; Pasqualino; Leão, 2005)
+
+Figura 2 – Esquema simpliﬁcado de um PAL
+Fonte: Freitas, Pasqualino e Leão (2005)
+
+Novamente a abaixo se encontra uma tabela feita a partir das informações coletadas nos
+artigos de CPLD produzidos por Freitas, Pasqualinoto e Leão, e do material de arquitetura de
+computadores disponibilizado pela USP em https://edisciplinas.usp.br, que busca explicar as
+principais diferenças entre PROM, PLA e PAL, em conjunto com uma ﬁgura retirada do artigo
+“A Tecnologia FPGA” feito por António Aragão pelo Instituto de Ciências Matemáticas de São
+Carlo que demonstra parte da arquitetura dos circuitos em questão.
+Quadro 1 – Diferenças entre PROM, PLA e PAL
+Fonte: Elaborado pelo autor
+
+Figura 3 – Esquemas de circuitos de um PROM, PLA e um PAL
+Fonte: Aragão (1998)
+
+5 PRINCIPAIS DIFERENÇAS E CARACTERÍSTICAS DE CPLD E FPGA
+5.1 FPGA (Field Programmable Gate Array)
+Devido a seu alto grau de ﬂexibilidade e facilidade de reprogramação, seu uso se destaca
+em setores elétricos, para processamento digital de sinal como em setores de telecomunicações,
+principalmente por garantir um alto desempenho em roteadores e switches. Sua arquitetura se
+baseia em milhões de blocos lógicos conﬁguráveis, denominados CLB (Conﬁguration Logical
+Block), constituídos praticamente de portas lógicas e ﬂip-ﬂops, tais blocos implementam neste
+circuito funções lógicas que possibilitam a customização de saídas a partir de determinadas
+entradas, portanto também podem ser chamados de blocos de entrada e saida (IOB – In/Out
+Blocks) (Weber et al., 2016)
+
+Figura 4 – Estrutura básica do FPGA
+Fonte: Weber et al. (2016)
+Quadro 2 – Possíveis aplicações em FPGAs
+Fonte: Weber et al. (2016)
+
+
+5.2 CPLD (Complex Programmable Logic Device
+Os CPLDs são dispositivos lógicos programáveis menos complexos que os FPGAs, ou
+seja, com menos ﬂip ﬂops e portas lógicas, sua arquitetura envolve circuitos integrados com-
+postos por portas AND e OR e um banco de macrocélulas. Possuindo também um desempenho
+mais baixo se comparados com FPGAs, no entanto com algumas vantagens como baixo con-
+sumo de energia e melhores tempos de respostas, o que os tornam ideais a sistemas de disposi-
+tivos móveis como celulares (Weber et al., 2016)
+Figura 5 – Representação genérica da arquitetura CPLD
+Fonte: Weber et al. (2016)
+
+5.3 Comparação entre arquiteturas CPLD e FPGA
+Abaixo se encontra uma tabela que busca demonstrar as principais diferenças entre cir-
+cuitos CPLD e FPGA, feita a partir de informações retiradas dos artigos de CPLD produzidos
+por Freitas, Pasqualinoto e Leão, “A Tecnologia FPGA” feito por António Aragão e Eduardo
+Marques pelo Instituto de Ciências Matemáticas de São Carlo, do artigo “Arquitetura FPGAs
+e CPLDs da ALTERA” produzido por André Weber, Helenluciany Cechinel, Maria Theisges,
+e Marcos Moecke”, e do material “CPLD vs FPGA: Differences between them and which one
+to use?” disponibilizado por Nonato Lab em https://numato.com/kb/cpld-vs-fpga-differences-
+one-use/.
+
+Quadro 3 – Diferenças entre CPLD e FPGA
+Fonte: Elaborado pelo autor
+
+6 CONCLUSÃO
+O estudo dos Dispositivos Lógicos Programáveis (PLDs), revela-se fundamental para a
+compreensão das práticas modernas em automação industrial e na arquitetura de computadores.
+Através da análise de circuitos lógicos e suas aplicações, conseguimos identiﬁcar a importância
+de tecnologias que promovem a ﬂexibilidade, eﬁciência e escalabilidade em projetos eletrôni-
+cos. Oportunizando a construção de uma base teórica mais robusta e uma perspectiva crítica
+sobre a implementação de soluções em hardware, permitindo o entendimento mais a fundo de
+projetos de sistemas mais complexos e adaptáveis.
+
+
+REFERÊNCIAS
+
+ARAGãO, A. C. de O. Uma Arquitetura Sistólica para Solução de Sistemas Lineares Imple-
+mentada com Circuitos FPGAs. 1998. <https://www.teses.usp.br/teses/disponiveis/55/55134/
+tde-19012001-110751/publico/dissert_aragao.pdf>. Acessado em: 12 out. 2024.
+FREITAS, T. T.; PASQUALINO, T. L.; LEãO, J. C. O CPLD (Dispositivo Complexo
+de Lógica Programação Aplicada em Automação Industrial). 2005. Acessado em: 12
+out. 2024. Disponível em: <https://edisciplinas.usp.br/pluginﬁle.php/530826/mod resource-
+/content/1/DISPOSITIVOS>.
+OLIVEIRA, C. A. de; AGUIAR, J. A. de; FONTANINI, M. G. S. Dispositivos Lógicos Pro-
+gramáveis. 2011. Acessado em: 12 out. 2024. Disponível em: <https://www.academia.edu-
+/download/48391125/FPGA.pdf>.
+RAO, R. ASIC vs FPGA: A Comprehensive Comparison. 2023. <https://www.wevolver.
+com/article/asic-vs-fpga>. Acessado em: 13 out. 2024.
+USP. Dispositivos Lógicos Programáveis (PLD). 2021. <https://edisciplinas.usp.br>. Aces-
+sado em: 12 out. 2024.
+WEBER, A. F. et al. Arquitetura FPGAs e CPLDs da ALTERA. 2016. <https://wiki.sj.ifsc.
+edu.br/images/2/2a/DLP29006-AE1-Tema1-2016-1.pdf>. Acessado em: 12 out. 2024.

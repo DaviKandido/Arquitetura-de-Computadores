@@ -1,0 +1,500 @@
+/*
+    identificação: 
+
+Guia_11 - 10 / 10 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+
+Atividade: Circuitos sequenciais – Máquinas de estados finitos (FSM) 
+ 
+01.) Projetar um circuito em Logisim para realizar a 
+a descrição em Verilog de um módulo 
+para implementar uma máquina de estados finitos 
+segundo a abordagem de Mealy. 
+O nome do arquivo deverá ser Mealy_1101.v, 
+e poderá seguir o modelo descrito abaixo. 
+
+
+    Resultado de teste:
+
+    module Mealy_1101; 
+
+    // Inputs
+    reg x;
+    reg clk;
+    reg reset;
+    reg [7:0] entrada; 
+
+    // Outputs
+    wire y;
+
+    mealy_1101 uut ( y ,x, clk, reset);
+
+    always #10 clk = ~clk; // Clock alterna a cada 10 unidadedes de tempo
+
+    initial begin
+
+        clk = 0;
+        reset = 0;
+        x = 0;
+
+        reset = 1; #15;   // Aplica 15 unidades de tempo
+        reset = 0;
+
+        // Test 1: Sequence "1101"
+        entrada = 4'b1101;
+
+        x = entrada[3]; #20;  
+        x = entrada[2]; #20;  
+        x = entrada[1]; #20;  
+        x = entrada[0]; #20;  // Final deve ser 1
+
+        // Test 2: Sequence "1110"
+        reset = 1; #15;
+        reset = 0;
+
+        entrada = 4'b1110;
+
+        x = entrada[3]; #20;  
+        x = entrada[2]; #20;  
+        x = entrada[1]; #20;  
+        x = entrada[0]; #20;  // Final deve ser 0
+
+
+        // Test 3: Sequence "101"
+        reset = 1; #15;
+        reset = 0;
+
+        entrada = 3'b101;
+
+        x = entrada[2]; #20;  
+        x = entrada[1]; #20;  
+        x = entrada[0]; #20;  // Final deve ser 0
+
+        // Test 4: Sequence "1101"
+        reset = 1; #15;
+        reset = 0;
+
+        entrada = 8'b1101101; //Verifica detecção em um sequência contida em outra
+
+
+        x = entrada[7]; #20; 
+        x = entrada[6]; #20;  
+        x = entrada[5]; #20;  
+        x = entrada[4]; #20;  // Final deve ser 1
+        x = entrada[3]; #20; 
+        x = entrada[2]; #20;  
+        x = entrada[1]; #20;  
+        x = entrada[0]; #20;  // Final deve ser 1
+
+
+        $finish;
+    end
+
+    // Monitor signals
+    initial begin
+        $monitor("Time = %5d, x = %b, y = %b, entrada = %4b, reset = %b", $time, x, y, entrada, reset);
+    end
+
+    endmodule
+
+    /*
+        -Saídas de resultados:
+
+    [Running] Mealy_1101.v
+    Time =     0, x = 0, y = 0, entrada = xxxxxxxx, reset = 1
+    Time =    15, x = 1, y = 0, entrada = 00001101, reset = 0
+    Time =    55, x = 0, y = 0, entrada = 00001101, reset = 0
+    Time =    75, x = 1, y = 0, entrada = 00001101, reset = 0
+    Time =    90, x = 1, y = 1, entrada = 00001101, reset = 0 //Saida 1 em y confirmando a sequencia
+    Time =    95, x = 1, y = 0, entrada = 00001101, reset = 1
+    Time =   110, x = 1, y = 0, entrada = 00001110, reset = 0
+    Time =   170, x = 0, y = 0, entrada = 00001110, reset = 0
+    Time =   190, x = 0, y = 0, entrada = 00001110, reset = 1
+    Time =   205, x = 1, y = 0, entrada = 00000101, reset = 0
+    Time =   225, x = 0, y = 0, entrada = 00000101, reset = 0
+    Time =   245, x = 1, y = 0, entrada = 00000101, reset = 0
+    Time =   265, x = 1, y = 0, entrada = 00000101, reset = 1 
+    Time =   280, x = 0, y = 0, entrada = 01101101, reset = 0
+    Time =   300, x = 1, y = 0, entrada = 01101101, reset = 0
+    Time =   340, x = 0, y = 0, entrada = 01101101, reset = 0
+    Time =   360, x = 1, y = 0, entrada = 01101101, reset = 0
+    Time =   370, x = 1, y = 1, entrada = 01101101, reset = 0 //Saida 1 em y confirmando a sequencia
+    Time =   390, x = 1, y = 0, entrada = 01101101, reset = 0
+    Time =   400, x = 0, y = 0, entrada = 01101101, reset = 0
+    Time =   420, x = 1, y = 0, entrada = 01101101, reset = 0
+    Time =   430, x = 1, y = 1, entrada = 01101101, reset = 0 //Saida 1 em y confirmando a sequencia
+    */
+ 
+
+02.) Projetar um circuito em Logisim para realizar a 
+a descrição em Verilog de um módulo 
+para implementar uma máquina de estados 
+finitos segundo a abordagem de Moore. 
+O nome do arquivo deverá ser Moore_1101.v, 
+e poderá seguir o modelo descrito abaixo. 
+
+ 
+    Resultado de teste:
+ 
+    module Moore_1101; 
+
+        // Inputs
+        reg x;
+        reg clk;
+        reg reset;
+        reg [7:0] entrada; 
+
+        // Outputs
+        wire y;
+
+        moore_1101 uut ( y ,x, clk, reset);
+
+        always #10 clk = ~clk; // Clock alterna a cada 10 unidades de tempo
+
+        initial begin
+
+            clk = 0;
+            reset = 0;
+            x = 1;
+
+            reset = 1; #15;   // Aplica 15 unidades de tempo
+            reset = 0;
+
+            // Test 1: Sequence "11011"
+            entrada = 5'b11011;
+
+            x = entrada[4]; #20;
+            x = entrada[3]; #20;  
+            x = entrada[2]; #20;  
+            x = entrada[1]; #20;  
+            x = entrada[0]; #20;  // Final deve ser 1
+
+            // Test 2: Sequence "1110"
+            reset = 1; #15;
+            reset = 0;
+
+            entrada = 4'b1110;
+
+            x = entrada[3]; #20;  
+            x = entrada[2]; #20;  
+            x = entrada[1]; #20;  
+            x = entrada[0]; #20;  // Final deve ser 0
+
+
+            // Test 3: Sequence "101"
+            reset = 1; #15;
+            reset = 0;
+
+            entrada = 3'b101;
+
+            x = entrada[2]; #20;  
+            x = entrada[1]; #20;  
+            x = entrada[0]; #20;  // Final deve ser 0
+
+            // Test 4: Sequence "1101"
+            reset = 1; #15;
+            reset = 0;
+
+            entrada = 8'b11011011; // Verifica detecção em um sequência contida em outra
+
+            x = entrada[7]; #20; 
+            x = entrada[6]; #20;  
+            x = entrada[5]; #20;  
+            x = entrada[4]; #20;  // Final deve ser 1
+            x = entrada[3]; #20; 
+            x = entrada[2]; #20;  
+            x = entrada[1]; #20;  
+            x = entrada[0]; #20;  // Final deve ser 1
+
+            $finish;
+        end
+
+        // Monitor signals
+        initial begin
+            $monitor("Time = %5d, x = %b, y = %b, entrada = %4b, reset = %b", $time, x, y, entrada, reset);
+        end
+
+        endmodule
+
+    /*
+            -Saídas de resultados:
+
+        [Running] Moore_1101.v
+        Time =     0, x = 1, y = 0, entrada = xxxxxxxx, reset = 1
+        Time =    15, x = 1, y = 0, entrada = 00011011, reset = 0
+        Time =    55, x = 0, y = 0, entrada = 00011011, reset = 0
+        Time =    75, x = 1, y = 0, entrada = 00011011, reset = 0
+        Time =    90, x = 1, y = 1, entrada = 00011011, reset = 0 //Saida 1 em y confirmando a sequencia
+        Time =   110, x = 1, y = 0, entrada = 00011011, reset = 0
+        Time =   115, x = 1, y = 0, entrada = 00011011, reset = 1
+        Time =   130, x = 1, y = 0, entrada = 00001110, reset = 0
+        Time =   190, x = 0, y = 0, entrada = 00001110, reset = 0
+        Time =   210, x = 0, y = 0, entrada = 00001110, reset = 1
+        Time =   225, x = 1, y = 0, entrada = 00000101, reset = 0
+        Time =   245, x = 0, y = 0, entrada = 00000101, reset = 0
+        Time =   265, x = 1, y = 0, entrada = 00000101, reset = 0
+        Time =   285, x = 1, y = 0, entrada = 00000101, reset = 1
+        Time =   300, x = 1, y = 0, entrada = 11011011, reset = 0
+        Time =   340, x = 0, y = 0, entrada = 11011011, reset = 0
+        Time =   360, x = 1, y = 0, entrada = 11011011, reset = 0
+        Time =   370, x = 1, y = 1, entrada = 11011011, reset = 0 //Saida 1 em y confirmando a sequencia
+        Time =   390, x = 1, y = 0, entrada = 11011011, reset = 0
+        Time =   400, x = 0, y = 0, entrada = 11011011, reset = 0
+        Time =   420, x = 1, y = 0, entrada = 11011011, reset = 0
+        Time =   430, x = 1, y = 1, entrada = 11011011, reset = 0 //Saida 1 em y confirmando a sequencia
+        Time =   450, x = 1, y = 0, entrada = 11011011, reset = 0
+    */
+
+ 
+ 
+03.) Projetar um circuito em Logisim para realizar a 
+a descrição em Verilog de um módulo 
+para testar as máquinas de estados finitos 
+segundo as abordagens de Mealy e de Moore. 
+O nome do arquivo deverá ser Guia_1100.v, 
+e poderá seguir o modelo descrito abaixo. 
+
+    
+    `include "mealy_1101.v" 
+    `include "moore_1101.v" 
+    
+    module Guia_1101; 
+    reg   clk, reset, x; 
+    wire  m1, m2; 
+    
+    mealy_1101  mealy1 ( m1, x, clk, reset ); 
+    moore_1101 moore1 ( m2, x, clk, reset ); 
+    
+    initial 
+    begin 
+    $display ( "Time     X   Mealy Moore" ); 
+    
+    // initial values 
+        clk    = 1; 
+        reset = 0; 
+        x       = 0; 
+    
+    // input signal changing 
+    #5    reset = 1; 
+    #10  x = 1; 
+    #10  x = 0; 
+    #10  x = 1; 
+    #20  x = 0; 
+    #10  x = 1; 
+    #10  x = 1; 
+    #10  x = 0; 
+    #10  x = 1; 
+    
+    #30 $finish; 
+    end // initial 
+    
+    always 
+    #5 clk = ~clk; 
+    
+    always @( posedge clk ) 
+    begin 
+    $display ( "%4d  %4b  %4b %5b", $time, x, m1, m2 ); 
+    end // always at positive edge clocking changing 
+    
+    endmodule // Guia_1100 
+
+    /*
+        -Saídas de resultados:
+
+    [Running] Moore_1101.v
+    [Running] Guia_1100.v
+    Time     X   Mealy Moore
+     10     0     0     0
+     20     1     0     0
+     30     0     0     0
+     40     1     0     0
+     50     1     0     0
+     60     0     0     0
+     70     1     1     0
+     80     1     0     1
+     90     0     0     0
+    100     1     1     0
+    110     1     0     1
+    120     1     0     0
+    */
+ 
+ 
+04.) Projetar um circuito em Logisim para realizar a 
+a descrição em Verilog de um módulo 
+para implementar uma máquina de estados finitos (FSM), 
+capaz de reconhecer apenas a primeira sequência 
+(1001) que aparecer e parar 
+(10010010 deverá ser reconhecida apenas uma vez). 
+O nome do arquivo deverá ser Guia_1101.v. 
+Incluir previsão de testes e verificação do circuito pelo Logisim. 
+
+    /*
+        -Saídas de resultados:
+
+    [Running] Guia_1101.v
+    Time     X   Mealy
+     10     0     0
+     20     0     0
+     30     1     0
+     40     0     0
+     50     0     0
+     60     1     1 // Sequencia 1001 encontrada
+     70     0     0
+     80     0     0
+     90     1     0 // Parou de identificar a sequencia pois já foi encontrada
+    100     0     0
+    110     0     0
+    120     0     0
+    */
+
+ 
+05.) Projetar um circuito em Logisim para realizar a 
+a descrição em Verilog de um módulo 
+para implementar uma máquina de estados finitos, 
+segundo a abordagem de Mealy, para reconhecer 
+uma sequência (1001) sem interseção  
+(100100101 deverá ser reconhecida apenas uma vez). 
+O nome do arquivo deverá ser Guia_1102.v. 
+Incluir previsão de testes e verificação do circuito pelo Logisim.
+
+
+    /*
+        -Saídas de resultados:
+
+
+    [Running] Guia_1102.v
+    Time     X   Mealy
+     10     0     0
+     20     1     0
+     30     0     0
+     40     1     0
+     50     1     0
+     60     0     0
+     70     0     0
+     80     1     1 // Sequencia 1001 encontrada
+     90     0     0
+    100     0     0
+    110     1     0 // Parou de identificar a sequencia pois já foi encontrada e também por ter intercção
+    120     0     0
+    130     1     0 
+    140     1     0
+    150     1     0
+
+    */
+
+ 
+06.) Projetar um circuito em Logisim para realizar a 
+a descrição em Verilog de um módulo 
+segundo a abordagem de Moore, para reconhecer 
+uma sequência (1001) com interseção  
+ (10010010001001 deverá ser reconhecida três vezes). 
+O nome do arquivo deverá ser Guia_1103.v. 
+Incluir previsão de testes e verificação do circuito pelo Logisim. 
+
+    /*
+        -Saídas de resultados:
+
+    [Running] Guia_1103.v
+    Time     X   Moore
+     10     0     0
+     20     1     0
+     30     0     0
+     40     0     0
+     50     1     0
+     60     0     1  // Sequencia 1001 encontrada
+     70     0     0
+     80     1     0
+     90     0     1  // Sequencia 1001 encontrada levando em conta a interseção dos anteriores
+    100     0     0
+    110     0     0
+    120     1     0
+    130     0     0
+    140     0     0
+    150     1     0
+    160     1     1 // Sequencia 1001 encontrada
+    170     1     0
+
+    */
+
+ 
+ 
+Extra 
+ 
+07.) Projetar um circuito em Logisim para realizar a 
+a descrição em Verilog de um módulo 
+para implementar uma máquina de estados finitos, 
+capaz de reconhecer uma sequência de  
+quatro dígitos binários que termine com  
+três valores iguais a 000 (x000, por exemplo). 
+O nome do arquivo deverá ser Guia_1104.v. 
+Incluir previsão de testes e verificação do circuito pelo Logisim. 
+
+
+    /*
+        -Saídas de resultados:
+
+
+    [Running] Guia_1104.v
+    Time     X   Mealy
+     10     0     0
+     20     1     0
+     30     0     0
+     40     1     0
+     50     1     0
+     60     0     0
+     70     0     0
+     80     0     1 // Sequencia x000 encontrada
+     90     1     0
+    100     0     0
+    110     0     0
+    120     0     1 // Sequencia x000 encontrada levando em conta a interseção dos anteriores
+    130     1     0
+    140     0     0
+    150     0     0
+    160     0     0
+    170     0     1 // Sequencia x000 encontrada
+    180     0     1 // Sequencia x000 encontrada levando em conta a interseção dos anteriores
+    190     0     1 // Sequencia x000 encontrada levando em conta a interseção dos anteriores
+
+    */
+ 
+08.) Projetar um circuito em Logisim para realizar a 
+a descrição em Verilog de um módulo 
+para implementar uma máquina de estados finitos, 
+capaz de reconhecer uma sequência de  
+três dígitos binários alternados (010 ou 101). 
+O nome do arquivo deverá ser Guia_1105.v. 
+Incluir previsão de testes e verificação do circuito pelo Logisim
+
+
+    /*
+        -Saídas de resultados:
+
+    [Running] Guia_1105.v
+    Time     X   Mealy
+     10     0     0
+     20     1     0
+     30     0     1 // Sequencia 010 encontrada
+     40     1     1 // Sequencia 101 encontrada levando em conta a interseção
+     50     1     0 
+     60     0     0
+     70     1     1 // Sequencia 101 encontrada
+     80     0     1 // Sequencia 010 encontrada levando em conta a interseção
+     90     1     1 // Sequencia 101 encontrada levando em conta a interseção
+    100     0     1 // Sequencia 010 encontrada levando em conta a interseção
+    110     0     0
+    120     0     0
+    130     0     0
+    140     1     0
+    150     0     1 // Sequencia 010 encontrada
+    160     0     0
+    170     1     0
+    180     1     0
+    190     1     0
+
+    */

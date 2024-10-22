@@ -1,0 +1,262 @@
+/*
+    identificação: 
+
+R01 - 14 / 10 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+
+
+01.) Dada tabela-verdade e o mapa de Veitch-Karnaugh abaixo:
+
+ ____________________________________ 
+| n |    m    |    M    | f(a,b,c,d) |
+|---|---------|---------|------------|
+| 0 | a'b'c'd'| A B C D |     0      | 
+| 1 | a'b'c'd | A B C D'|     0      | 
+| 2 | a'b'c d'| A B C'D |     0      |
+| 3 | a'b'c d | A B C'D'|     0      |
+| 4 | a'b c'd'| A B'C D |     1      |
+| 5 | a'b c'd | A B'C D'|     0      |
+| 6 | a'b c d'| A B'C'D |     0      |
+| 7 | a'b c d | A B'C'D'|     0      |
+| 8 | a b'c'd'| A'B C D |     1      |
+| 9 | a b'c'd | A'B C D'|     1      |
+| A | a b'c d'| A'B C'D |     0      |
+| B | a b'c d | A'B C'D'|     0      |
+| C | a b c'd'| A'B'C D |     1      |
+| D | a b c'd | A'B'C D'|     1      |
+| E | a b c d'| A'B'C'D |     1      |
+| F | a b c d | A'B'C'D'|     0      |
+|___|_________|_________|____________|
+
+
+           mintermos
+ ___________________________ 
+| ab\cd | 00 | 01 | 11 | 10 |
+|-------|----|----|----|----|
+| 00    |    |    |    |    |
+|-------|----|----|----|----|
+| 01    |  1 |    |    |    |
+|-------|----|----|----|----|
+| 11    |  1 |  1 |    |  1 |
+|-------|----|----|----|----|
+| 10    |  1 |  1 |    |    |
+|_______|____|____|____|____|
+
+           MAXTERMOS
+ ___________________________ 
+| AB\CD | 00 | 01 | 11 | 10 |
+|-------|----|----|----|----|
+| 00    |  0 |  0 |  0 |  0 |
+|-------|----|----|----|----|
+| 01    |    |  0 |  0 |  0 |
+|-------|----|----|----|----|
+| 11    |    |    |  0 |    |
+|-------|----|----|----|----|
+| 10    |    |    |  0 |  0 |
+|_______|____|____|____|____|
+
+                    
+                                        mintermos
+_______________________________________________________________10____11____12____13____14____15_ 
+|  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|     |     |     |     |  1  |     |     |     |  1  |  1  |     |     |  1  |  1  |  1  |     |
+|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+
+
+                                        MAXTERMOS
+________________________________________________________________________________________________ 
+|  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|  0  |  0  |  0  |  0  |     |  0  |  0  |  0  |     |     |  0  |  0  |     |     |     |  0  |
+|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
+
+
+a.) expressão canônica para SoP(a,b,c,d)
+
+
+    SoP(a,b,c,d) =  ∑ m ( 4,8,9,C,D,E ) =  a'•b•c'•d' + a•b'•c'•d' + a•b'•c'•d + a•b•c'•d' + a•b•c'•d + a•b•c•d'
+
+
+b.) expressão canônica para PoS(A,B,C,D)
+
+
+    PoS(A,B,C,D) = π M ( 0, 1, 2, 3, 5, 6, 7, A, B, F ) = A+B+C+D • A+B+C+D' • A+B+C'+D • A+B+C'+D' • A+B'+C+D' • A+B'+C'+D • A+B'+C'+D' • A'+B+C'+D • A'+B+C'+D' • A'+B'+C'+D'
+
+
+c.) simplificação de mintermos pelo mapa de Veitch-Karnaugh
+
+        SoP(a,b,c,d) =  ∑ m ( 4,8,9,C,D,E ) =  a•c' + b•c'•d' + a•b•d'
+
+d.) simplificação de MAXTERMOS pelo mapa de Veitch-Karnaugh
+
+
+    Simplificação:
+    PoS(A,B,C,D) = π M ( 0, 1, 2, 3, 5, 6, 7, A, B, F ) = (A+B) • (A+D') • (A+C') • (C'+D') • (B+C')
+
+
+
+e.) expressão SoP equivalente com portas NAND de 2 entradas (usar dupla negação)
+
+        ((a•c' + b•c'•d' + a•b•d')')'
+
+      =  ((a•c')' • (b•c'•d')' • (a•b•d')')'
+
+      =  ( (a•(c•c)')' • (b•(c•c)'•(d•d)')' • (a•b•(d•d)')' )'
+
+
+
+f .) expressão PoS equivalente com portas NOR de 2 entradas (usar dupla negação)
+
+      (((A+B) • (A+D') • (A+C') • (C'+D') • (B+C'))')'
+
+    = ( (A+B)' + (A+(D+D)')' + (A+(C+C)')' + ((C+C)'+(D+D)')' + (B+(C+C)')' )'
+ 
+
+
+/*
+    -Saídas de resultados em Verilog:
+
+ Davi Cândido de Almeida - 857859
+
+ Atividade 01)  
+
+ a  b  c  d =  a) b) c) d) e) f)
+ x  x  x  x =  x  x  x  x  x  x  
+ 0  0  0  0 =  0  0  0  0  0  0  
+ 0  0  0  1 =  0  0  0  0  0  0  
+ 0  0  1  0 =  0  0  0  0  0  0  
+ 0  0  1  1 =  0  0  0  0  0  0  
+ 0  1  0  0 =  1  1  1  1  1  1  
+ 0  1  0  1 =  0  0  0  0  0  0  
+ 0  1  1  0 =  0  0  0  0  0  0  
+ 0  1  1  1 =  0  0  0  0  0  0  
+ 1  0  0  0 =  1  1  1  1  1  1  
+ 1  0  0  1 =  1  1  1  1  1  1  
+ 1  0  1  0 =  0  0  0  0  0  0  
+ 1  0  1  1 =  0  0  0  0  0  0  
+ 1  1  0  0 =  1  1  1  1  1  1  
+ 1  1  0  1 =  1  1  1  1  1  1  
+ 1  1  1  0 =  1  1  1  1  1  1  
+ 1  1  1  1 =  0  0  0  0  0  0 
+
+
+*/
+
+
+
+02.) . Implementar no Verilog e no Logisim as expressões abaixo para obter as tabelas verdade:
+
+a.) mux (a, not(a), c)
+b.) mux (c, not(c), mux(a,not(a),b))
+
+/*
+    -Saídas de resultados esperados em Verilog:
+
+Tabela Verdade de a) e b)
+   a    b    c    sA   sB
+   0    0    0    0    0
+   0    1    0    0    1
+   1    0    0    1    1
+   1    1    0    1    0
+   0    0    1    1    1
+   0    1    1    1    0
+   1    0    1    0    0
+   1    1    1    0    1
+*/
+
+
+03.)  Implementar em Verilog e em Logisim as expressões abaixo para obter as tabelas verdade:
+a.) (~a|b) & (b|~c)
+b.) (x'.y)'.(x'.y')'
+/*
+    -Saídas de resultados em Verilog:
+
+   R0103 - Tests
+   x    y    z 
+   a    b    c    sA   sB
+   0    0    0    1    0
+   0    0    1    0    0
+   0    1    0    1    0
+   0    1    1    1    0
+   1    0    0    0    1
+   1    1    0    1    1
+   1    1    1    1    1
+
+*/
+
+04.) Dado o valor +374.5(8), considerar a representação
+
+a.) com a menor quantidade de bits para sinal, expoente e mantissa
+
+  Parte inteira: 375(8) = 011 111 110(2)
+
+  Parte Decimal: 0.5 = 5x8^(-1) = 0.625(10)
+
+                  0.625 x 2 = 1.25 -> 1
+                  0.25  x 2 = 0.50 -> 0
+                  0.5   x 2 = 1.00 -> 1  -> 0.5(8) = 0.101
+
+  0 -> Sinal positivo
+  111 -> 7 bits de expoente
+  11111100101 -> mansíssima
+
+  Representação final: 0 111 11111100101(2)
+
+
+b.) IEEE-754 para 1 bit para sinal, 8 bits para expoente (com corte = 127) e 23 bits de mantissa      
+
+
+ 0 -> sinal
+ 10000110 -> expoente
+ 11111100101000000000000 -> mansíssima
+
+ Representação final: 0 10000110 11111100101000000000000(2)
+
+
+05.) Calcular:
+
+a.) o valor binário igual a NOT (174(8)) - C2,8(F8(16))
+
+                               NOT
+NOT (174(8)) = 1 111 100 =  0 000 011
+
+                              C1         C2
+C2,8(F8(16) = 1111 1000 = 0000 0111 = 0000 1000
+
+    000 000 011
+  - 000 001 000
+  --------------
+    111 111 011 -> -5(10) ou -101(2)
+
+    000 000 011
+  + 111 111 000
+  --------------
+    111 111 011 -> -5(10) ou -101(2)
+
+b.) a tabela verdade para NOT( NAND ( XOR(a,b), NOR(a, NOT(b) ) ) )
+
+
+ ______________________________________________________________________________________________________________
+| m | a b | XOR(a,b) | NOR(a, NOT(b))| NAND (XOR(a,b),NOR(a, NOT(b))) | NOT( NAND ( XOR(a,b), NOR(a, NOT(b)))) |
+|---|-----|----------|---------------|--------------------------------|----------------------------------------|
+| 0 | 0 0 |     0    |       0       |               1                |                   0                    |
+| 1 | 0 1 |     1    |       1       |               0                |                   1                    |
+| 2 | 1 0 |     1    |       0       |               1                |                   0                    |
+| 3 | 1 1 |     0    |       0       |               1                |                   0                    |
+|___|_____|__________|_______________|________________________________|________________________________________|
+
+
+Tabela Verdade de expressão:
+
+   a    b    sB
+   0    0    0
+   0    1    1
+   1    0    0
+   1    1    0
+
