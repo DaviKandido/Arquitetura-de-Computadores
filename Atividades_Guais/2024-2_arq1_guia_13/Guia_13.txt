@@ -1,0 +1,299 @@
+/*
+    identificação: 
+
+Guia_ - 31 / 10 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+
+- Exercícios
+
+01.) Projetar e descrever em Logisim e Verilog por portas um módulo,
+com portas e flip-flops tipo JK apenas,
+para implementar um contador assíncrono decrescente
+com 5 bits de comprimento.
+DICA: Ver modelo anexo.
+
+
+Tempo=0 | in1=0 | clear=1 | pulse = 0 | out=11111
+Tempo=10 | in1=0 | clear=0 | pulse = 0 | out=11111
+Tempo=20 | in1=1 | clear=0 | pulse = 0 | out=11111
+Tempo=30 | in1=1 | clear=0 | pulse = 1 | out=11110
+Tempo=40 | in1=1 | clear=0 | pulse = 0 | out=11110
+Tempo=50 | in1=1 | clear=0 | pulse = 1 | out=11101
+Tempo=60 | in1=1 | clear=0 | pulse = 0 | out=11101
+Tempo=70 | in1=1 | clear=0 | pulse = 1 | out=11100
+Tempo=80 | in1=1 | clear=0 | pulse = 0 | out=11100
+Tempo=90 | in1=0 | clear=0 | pulse = 0 | out=11100
+Tempo=100 | in1=0 | clear=0 | pulse = 1 | out=11100
+Tempo=110 | in1=0 | clear=0 | pulse = 0 | out=11100
+Tempo=130 | in1=0 | clear=0 | pulse = 1 | out=11100
+Tempo=140 | in1=0 | clear=0 | pulse = 0 | out=11100
+Tempo=150 | in1=0 | clear=0 | pulse = 1 | out=11100
+Tempo=160 | in1=0 | clear=0 | pulse = 0 | out=11100
+Tempo=170 | in1=1 | clear=0 | pulse = 0 | out=11100
+Tempo=180 | in1=1 | clear=0 | pulse = 1 | out=11011
+Tempo=190 | in1=1 | clear=0 | pulse = 0 | out=11011
+Tempo=200 | in1=1 | clear=0 | pulse = 1 | out=11010
+Tempo=210 | in1=1 | clear=0 | pulse = 0 | out=11010
+Tempo=220 | in1=1 | clear=0 | pulse = 1 | out=11001
+Tempo=230 | in1=1 | clear=0 | pulse = 0 | out=11001
+Tempo=240 | in1=1 | clear=0 | pulse = 1 | out=11000
+Tempo=250 | in1=1 | clear=0 | pulse = 0 | out=11000
+Tempo=260 | in1=1 | clear=0 | pulse = 1 | out=10111
+Tempo=270 | in1=1 | clear=0 | pulse = 0 | out=10111
+Tempo=280 | in1=1 | clear=0 | pulse = 1 | out=10110
+Tempo=290 | in1=1 | clear=0 | pulse = 0 | out=10110
+Tempo=300 | in1=1 | clear=0 | pulse = 1 | out=10101
+Tempo=310 | in1=1 | clear=0 | pulse = 0 | out=10101
+Tempo=320 | in1=1 | clear=0 | pulse = 1 | out=10100
+Tempo=330 | in1=1 | clear=0 | pulse = 0 | out=10100
+
+
+02.) Projetar e descrever em Logisim e Verilog por portas um módulo
+com portas e flip-flops tipo JK apenas,
+para implementar um contador assíncrono crescente
+com 5 bits de comprimento.
+
+
+Tempo=0 | in1=0 | clear=1 | pulse = 0 | out=11111
+Tempo=10 | in1=1 | clear=0 | pulse = 0 | out=11111
+Tempo=15 | in1=1 | clear=0 | pulse = 1 | out=00000
+Tempo=20 | in1=1 | clear=0 | pulse = 0 | out=00000
+Tempo=25 | in1=1 | clear=0 | pulse = 1 | out=00001
+Tempo=30 | in1=1 | clear=0 | pulse = 0 | out=00001
+Tempo=35 | in1=1 | clear=0 | pulse = 1 | out=00010
+Tempo=40 | in1=1 | clear=0 | pulse = 0 | out=00010
+Tempo=45 | in1=0 | clear=0 | pulse = 0 | out=00010
+Tempo=50 | in1=0 | clear=0 | pulse = 1 | out=00010
+Tempo=55 | in1=0 | clear=0 | pulse = 0 | out=00010
+Tempo=65 | in1=0 | clear=0 | pulse = 1 | out=00010
+Tempo=70 | in1=0 | clear=0 | pulse = 0 | out=00010
+Tempo=75 | in1=0 | clear=0 | pulse = 1 | out=00010
+Tempo=80 | in1=0 | clear=0 | pulse = 0 | out=00010
+Tempo=85 | in1=1 | clear=0 | pulse = 0 | out=00010
+Tempo=90 | in1=1 | clear=0 | pulse = 1 | out=00011
+Tempo=95 | in1=1 | clear=0 | pulse = 0 | out=00011
+Tempo=100 | in1=1 | clear=0 | pulse = 1 | out=00100
+Tempo=105 | in1=1 | clear=0 | pulse = 0 | out=00100
+Tempo=110 | in1=1 | clear=0 | pulse = 1 | out=00101
+Tempo=115 | in1=1 | clear=0 | pulse = 0 | out=00101
+Tempo=120 | in1=1 | clear=0 | pulse = 1 | out=00110
+Tempo=125 | in1=1 | clear=0 | pulse = 0 | out=00110
+Tempo=130 | in1=1 | clear=0 | pulse = 1 | out=00111
+Tempo=135 | in1=1 | clear=0 | pulse = 0 | out=00111
+Tempo=140 | in1=1 | clear=0 | pulse = 1 | out=01000
+Tempo=145 | in1=1 | clear=0 | pulse = 0 | out=01000
+Tempo=150 | in1=1 | clear=0 | pulse = 1 | out=01001
+Tempo=155 | in1=1 | clear=0 | pulse = 0 | out=01001
+Tempo=160 | in1=1 | clear=1 | pulse = 0 | out=11111
+Tempo=165 | in1=1 | clear=1 | pulse = 1 | out=11111
+Tempo=170 | in1=1 | clear=1 | pulse = 0 | out=111
+
+03.) Projetar e descrever em Logisim e Verilog por portas um módulo,
+com portas lógicas e flip-flops tipo JK apenas,
+para implementar um contador assíncrono decádico crescente
+com 4 bits de comprimento.
+DICA: Ver modelo anexo.
+
+Tempo=0 | in1=0 | clear=1 | pulse = 0 | out=xxxx
+Tempo=10 | in1=0 | clear=0 | pulse = 0 | out=0000
+Tempo=20 | in1=1 | clear=1 | pulse = 0 | out=0000
+Tempo=25 | in1=1 | clear=1 | pulse = 1 | out=0001
+Tempo=30 | in1=1 | clear=1 | pulse = 0 | out=0001
+Tempo=35 | in1=1 | clear=1 | pulse = 1 | out=0010
+Tempo=40 | in1=1 | clear=1 | pulse = 0 | out=0010
+Tempo=45 | in1=1 | clear=1 | pulse = 1 | out=0011
+Tempo=50 | in1=1 | clear=1 | pulse = 0 | out=0011
+Tempo=55 | in1=0 | clear=1 | pulse = 0 | out=0011
+Tempo=60 | in1=0 | clear=1 | pulse = 1 | out=0011
+Tempo=65 | in1=0 | clear=1 | pulse = 0 | out=0011
+Tempo=75 | in1=0 | clear=1 | pulse = 1 | out=0011
+Tempo=80 | in1=0 | clear=1 | pulse = 0 | out=0011
+Tempo=85 | in1=0 | clear=1 | pulse = 1 | out=0011
+Tempo=90 | in1=0 | clear=1 | pulse = 0 | out=0011
+Tempo=95 | in1=1 | clear=1 | pulse = 0 | out=0011
+Tempo=100 | in1=1 | clear=1 | pulse = 1 | out=0100
+Tempo=105 | in1=1 | clear=1 | pulse = 0 | out=0100
+Tempo=110 | in1=1 | clear=1 | pulse = 1 | out=0101
+Tempo=115 | in1=1 | clear=1 | pulse = 0 | out=0101
+Tempo=120 | in1=1 | clear=1 | pulse = 1 | out=0110
+Tempo=125 | in1=1 | clear=1 | pulse = 0 | out=0110
+Tempo=130 | in1=1 | clear=1 | pulse = 1 | out=0111
+Tempo=135 | in1=1 | clear=1 | pulse = 0 | out=0111
+Tempo=140 | in1=1 | clear=1 | pulse = 1 | out=1000
+Tempo=145 | in1=1 | clear=1 | pulse = 0 | out=1000
+Tempo=150 | in1=1 | clear=1 | pulse = 1 | out=1001
+Tempo=155 | in1=1 | clear=1 | pulse = 0 | out=1001 //Contou até 10
+Tempo=160 | in1=1 | clear=1 | pulse = 1 | out=0000
+Tempo=165 | in1=1 | clear=1 | pulse = 0 | out=0000
+Tempo=170 | in1=1 | clear=1 | pulse = 1 | out=0001
+Tempo=175 | in1=1 | clear=1 | pulse = 0 | out=0001
+Tempo=180 | in1=1 | clear=0 | pulse = 0 | out=0000 //Clear ativado
+
+
+04.) Projetar e descrever em Logisim e Verilog por portas um módulo
+com portas e flip-flops tipo JK apenas,
+para implementar um contador assíncrono decádico decrescente
+com 4 bits de comprimento.
+
+Tempo=0 | in1=0 | pulse = 0 | out=1111
+Tempo=5 | in1=0 | pulse = 1 | out=1111
+Tempo=10 | in1=0 | pulse = 0 | out=1111
+Tempo=15 | in1=0 | pulse = 1 | out=1111
+Tempo=20 | in1=0 | pulse = 0 | out=1111
+Tempo=25 | in1=0 | pulse = 1 | out=1111
+Tempo=30 | in1=0 | pulse = 0 | out=1111
+Tempo=35 | in1=1 | pulse = 0 | out=1111
+Tempo=40 | in1=1 | pulse = 1 | out=1110
+Tempo=45 | in1=1 | pulse = 0 | out=1110
+Tempo=50 | in1=0 | pulse = 0 | out=1111 //teste de in = 0
+Tempo=55 | in1=0 | pulse = 1 | out=1111
+Tempo=60 | in1=0 | pulse = 0 | out=1111
+Tempo=65 | in1=1 | pulse = 0 | out=1111 //retomada do contador
+Tempo=70 | in1=1 | pulse = 1 | out=1110
+Tempo=75 | in1=1 | pulse = 0 | out=1110
+Tempo=80 | in1=1 | pulse = 1 | out=1101
+Tempo=85 | in1=1 | pulse = 0 | out=1101
+Tempo=90 | in1=1 | pulse = 1 | out=1100
+Tempo=95 | in1=1 | pulse = 0 | out=1100
+Tempo=100 | in1=1 | pulse = 1 | out=1011
+Tempo=105 | in1=1 | pulse = 0 | out=1011
+Tempo=110 | in1=1 | pulse = 1 | out=1010
+Tempo=115 | in1=1 | pulse = 0 | out=1010
+Tempo=120 | in1=1 | pulse = 1 | out=1001
+Tempo=125 | in1=1 | pulse = 0 | out=1001
+Tempo=130 | in1=1 | pulse = 1 | out=1000
+Tempo=135 | in1=1 | pulse = 0 | out=1000
+Tempo=140 | in1=1 | pulse = 1 | out=0111
+Tempo=145 | in1=1 | pulse = 0 | out=0111
+Tempo=150 | in1=1 | pulse = 1 | out=0110
+Tempo=155 | in1=1 | pulse = 0 | out=0110
+
+05.) Projetar e descrever em Logisim e Verilog um módulo,
+com portas e flip-flops tipo T apenas,
+para implementar um contador síncrono módulo 7.
+DICA: Ver modelo anexo.
+
+
+Tempo=0 | clock=0 | clear=1 | pulse = 0 | out=111
+Tempo=5 | clock=1 | clear=1 | pulse = 0 | out=111
+Tempo=10 | clock=0 | clear=1 | pulse = 0 | out=111
+Tempo=15 | clock=1 | clear=1 | pulse = 0 | out=111
+Tempo=20 | clock=0 | clear=0 | pulse = 0 | out=111
+Tempo=25 | clock=1 | clear=0 | pulse = 1 | out=111
+Tempo=30 | clock=0 | clear=0 | pulse = 0 | out=111
+Tempo=35 | clock=1 | clear=0 | pulse = 1 | out=111
+Tempo=40 | clock=0 | clear=0 | pulse = 0 | out=111
+Tempo=45 | clock=1 | clear=0 | pulse = 1 | out=111
+Tempo=50 | clock=0 | clear=0 | pulse = 0 | out=111
+Tempo=55 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=60 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=65 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=70 | clock=0 | clear=0 | pulse = 0 | out=111
+Tempo=75 | clock=1 | clear=0 | pulse = 1 | out=111
+Tempo=80 | clock=0 | clear=0 | pulse = 0 | out=111
+Tempo=85 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=90 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=95 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=100 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=105 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=110 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=115 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=120 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=125 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=130 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=135 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=140 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=145 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=150 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=155 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=160 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=165 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=170 | clock=0 | clear=0 | pulse = 1 | out=111
+Tempo=175 | clock=1 | clear=0 | pulse = 0 | out=111
+Tempo=180 | clock=0 | clear=0 | pulse = 0 | out=111
+
+
+- Extras
+
+06.) Projetar e descrever em Logisim e Verilog por portas um módulo,
+com portas e flip-flops tipo JK apenas,
+para implementar um contador em anel com 5 bits de comprimento.
+DICA: Ver modelo anexo.
+
+
+Tempo=0 | clk=0 | clear=1 | input = 1 | out=00000
+Tempo=5 | clk=1 | clear=1 | input = 1 | out=00000
+Tempo=10 | clk=0 | clear=0 | input = 1 | out=00000
+Tempo=15 | clk=1 | clear=0 | input = 1 | out=10000
+Tempo=20 | clk=0 | clear=0 | input = 0 | out=10000
+Tempo=25 | clk=1 | clear=0 | input = 0 | out=01000
+Tempo=30 | clk=0 | clear=0 | input = 0 | out=01000
+Tempo=35 | clk=1 | clear=0 | input = 0 | out=00100
+Tempo=40 | clk=0 | clear=0 | input = 0 | out=00100
+Tempo=45 | clk=1 | clear=0 | input = 0 | out=00010
+Tempo=50 | clk=0 | clear=0 | input = 0 | out=00010
+Tempo=55 | clk=1 | clear=0 | input = 0 | out=00001
+Tempo=60 | clk=0 | clear=0 | input = 0 | out=00001
+Tempo=65 | clk=1 | clear=0 | input = 0 | out=10000
+Tempo=70 | clk=0 | clear=0 | input = 0 | out=10000
+Tempo=75 | clk=1 | clear=0 | input = 0 | out=01000
+Tempo=80 | clk=0 | clear=0 | input = 0 | out=01000
+Tempo=85 | clk=1 | clear=0 | input = 1 | out=10100 //Segundo input
+Tempo=90 | clk=0 | clear=0 | input = 0 | out=10100
+Tempo=95 | clk=1 | clear=0 | input = 0 | out=01010
+Tempo=100 | clk=0 | clear=0 | input = 0 | out=01010
+Tempo=105 | clk=1 | clear=0 | input = 0 | out=00101
+Tempo=110 | clk=0 | clear=0 | input = 0 | out=00101
+Tempo=115 | clk=1 | clear=0 | input = 0 | out=10010
+Tempo=120 | clk=0 | clear=0 | input = 0 | out=10010
+Tempo=125 | clk=1 | clear=0 | input = 0 | out=01001
+Tempo=130 | clk=0 | clear=0 | input = 0 | out=01001
+Tempo=135 | clk=1 | clear=0 | input = 0 | out=10100
+Tempo=140 | clk=0 | clear=0 | input = 0 | out=10100
+Tempo=145 | clk=1 | clear=0 | input = 0 | out=01010
+Tempo=150 | clk=0 | clear=0 | input = 0 | out=01010
+
+
+07.) Projetar e descrever em Logisim e Verilog por portas um módulo
+com portas e flip-flops tipo JK apenas,
+para implementar um contador em anel torcido com 5 bits de comprimento.
+DICA: Ver modelo anexo.
+
+Tempo=0 | clk=0 | clear=1 | input = 1 | out=00000
+Tempo=5 | clk=1 | clear=1 | input = 1 | out=00000
+Tempo=10 | clk=0 | clear=0 | input = 1 | out=00000
+Tempo=15 | clk=1 | clear=0 | input = 1 | out=10000
+Tempo=20 | clk=0 | clear=0 | input = 0 | out=10000
+Tempo=25 | clk=1 | clear=0 | input = 0 | out=11000
+Tempo=30 | clk=0 | clear=0 | input = 0 | out=11000
+Tempo=35 | clk=1 | clear=0 | input = 0 | out=11100
+Tempo=40 | clk=0 | clear=0 | input = 0 | out=11100
+Tempo=45 | clk=1 | clear=0 | input = 0 | out=11110
+Tempo=50 | clk=0 | clear=0 | input = 0 | out=11110
+Tempo=55 | clk=1 | clear=0 | input = 0 | out=11111
+Tempo=60 | clk=0 | clear=0 | input = 0 | out=11111
+Tempo=65 | clk=1 | clear=0 | input = 0 | out=01111
+Tempo=70 | clk=0 | clear=0 | input = 0 | out=01111
+Tempo=75 | clk=1 | clear=0 | input = 0 | out=00111
+Tempo=80 | clk=0 | clear=0 | input = 0 | out=00111
+Tempo=85 | clk=1 | clear=0 | input = 0 | out=00011
+Tempo=90 | clk=0 | clear=0 | input = 0 | out=00011
+Tempo=95 | clk=1 | clear=0 | input = 0 | out=00001
+Tempo=100 | clk=0 | clear=0 | input = 0 | out=00001
+Tempo=105 | clk=1 | clear=0 | input = 0 | out=00000
+Tempo=110 | clk=0 | clear=0 | input = 0 | out=00000
+Tempo=115 | clk=1 | clear=0 | input = 1 | out=10000 //novo input
+Tempo=120 | clk=0 | clear=0 | input = 0 | out=10000
+Tempo=125 | clk=1 | clear=0 | input = 0 | out=11000
+Tempo=130 | clk=0 | clear=0 | input = 0 | out=11000
+Tempo=135 | clk=1 | clear=1 | input = 0 | out=00000 // teste de limpeza
+Tempo=140 | clk=0 | clear=0 | input = 0 | out=00000
+Tempo=145 | clk=1 | clear=0 | input = 0 | out=10000
+Tempo=150 | clk=0 | clear=0 | input = 0 | out=10000
+Tempo=155 | clk=1 | clear=0 | input = 0 | out=11000
+Tempo=160 | clk=0 | clear=0 | input = 0 | out=11000

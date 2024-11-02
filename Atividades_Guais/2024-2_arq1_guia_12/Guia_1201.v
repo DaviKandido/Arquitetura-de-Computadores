@@ -74,6 +74,18 @@ endmodule
 /*
     -Saídas de resultados:
 
+Tempo=0 | addr=0 | r_w=0 | in=0000 | clear=1 | out=0000
+Tempo=10 | addr=1 | r_w=1 | in=1010 | clear=0 | out=0000
+Tempo=20 | addr=1 | r_w=0 | in=1010 | clear=0 | out=1010
+Tempo=25 | addr=1 | r_w=0 | in=1010 | clear=0 | out=0000
+Tempo=30 | addr=1 | r_w=0 | in=0101 | clear=0 | out=1010
+Tempo=35 | addr=1 | r_w=0 | in=0101 | clear=0 | out=0000
+Tempo=40 | addr=1 | r_w=1 | in=0101 | clear=0 | out=1010
+Tempo=45 | addr=1 | r_w=1 | in=0101 | clear=0 | out=0000
+Tempo=50 | addr=1 | r_w=0 | in=0101 | clear=0 | out=0101
+Tempo=55 | addr=1 | r_w=0 | in=0101 | clear=0 | out=0000
+Tempo=60 | addr=1 | r_w=0 | in=0101 | clear=1 | out=0000
+Tempo=70 | addr=1 | r_w=0 | in=0101 | clear=0 | out=0000
 */
 
 /*
