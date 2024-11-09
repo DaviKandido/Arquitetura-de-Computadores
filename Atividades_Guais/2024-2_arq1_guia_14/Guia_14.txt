@@ -1,7 +1,7 @@
 /*
     identificação: 
 
-Guia_14 - 24 / 11 / 2024
+Guia_14 - 09 / 11 / 2024
 
 Nome: Davi Cândido de Almeida
 Matricula: 857859
@@ -9,3 +9,226 @@ Código de Pessoa: 1527368
 
 */
 
+Todos os circuitos deverão ser simulados no Logisim.
+01.) Projetar e descrever em Logisim e Verilog um módulo
+para implementar um registrador de deslocamento
+para a esquerda, com 6 bits (estágios),
+com carga de 1 bit (load=LD) no preset do primeiro estágio.
+DICA: Ver modelo anexo.
+
+[Running] Guia_1401.v
+Tempo=0 | clear=1 | input0 = 0 | out=xxxxxx
+Tempo=5 | clear=1 | input0 = 0 | out=000000
+Tempo=10 | clear=0 | input0 = 0 | out=000000
+Tempo=15 | clear=0 | input0 = 1 | out=000001
+Tempo=20 | clear=0 | input0 = 0 | out=000001
+Tempo=25 | clear=0 | input0 = 0 | out=000010
+Tempo=35 | clear=0 | input0 = 0 | out=000100
+Tempo=45 | clear=0 | input0 = 0 | out=001000
+Tempo=55 | clear=0 | input0 = 0 | out=010000
+Tempo=65 | clear=0 | input0 = 0 | out=100000
+Tempo=75 | clear=0 | input0 = 0 | out=000000
+Tempo=85 | clear=0 | input0 = 1 | out=000001
+Tempo=90 | clear=0 | input0 = 0 | out=000001
+Tempo=95 | clear=1 | input0 = 0 | out=000000
+
+
+02.) Projetar e descrever em Logisim e Verilog um módulo
+para implementar um registrador de deslocamento
+para a esquerda, com 6 bits (estágios),
+com carga inicial (load=LD) em todos preset dos estágios.
+
+Tempo=0 | clear=1 | load=0 | input = 0xxxxx | out=xxxxxx
+Tempo=5 | clear=1 | load=0 | input = 0xxxxx | out=000000
+Tempo=10 | clear=0 | load=1 | input = 11111x | out=000000
+Tempo=15 | clear=0 | load=1 | input = 111111 | out=111111
+Tempo=25 | clear=0 | load=1 | input = 000001 | out=111111
+Tempo=30 | clear=0 | load=1 | input = 000000 | out=111111
+Tempo=35 | clear=0 | load=1 | input = 000000 | out=111110
+Tempo=40 | clear=0 | load=0 | input = 000000 | out=111110
+Tempo=45 | clear=0 | load=0 | input = 000000 | out=111100
+Tempo=55 | clear=0 | load=0 | input = 000000 | out=111000
+Tempo=65 | clear=0 | load=0 | input = 000000 | out=110000
+Tempo=75 | clear=0 | load=0 | input = 000000 | out=100000
+Tempo=85 | clear=0 | load=0 | input = 000000 | out=000000
+Tempo=100 | clear=0 | load=1 | input = 000000 | out=000000
+Tempo=110 | clear=0 | load=1 | input = 000001 | out=000000
+Tempo=115 | clear=0 | load=1 | input = 000001 | out=000001
+Tempo=120 | clear=0 | load=1 | input = 000000 | out=000001
+Tempo=125 | clear=0 | load=1 | input = 000000 | out=000010
+Tempo=130 | clear=0 | load=0 | input = 000000 | out=000010
+Tempo=135 | clear=0 | load=0 | input = 000000 | out=000100
+Tempo=140 | clear=1 | load=0 | input = 000000 | out=000100
+Tempo=145 | clear=1 | load=0 | input = 000000 | out=000000
+Tempo=150 | clear=0 | load=0 | input = 000000 | out=000000
+
+03.) Projetar e descrever em Logisim e Verilog um módulo
+para implementar um registrador de deslocamento
+circular ("ring") para a direita, com 6 bits (estágios),
+com carga unitária no primeiro estágio.
+
+[Running] Guia_1403.v
+Tempo=0 | clear=1 | input0 = 0 | out=xxxxxx
+Tempo=5 | clear=1 | input0 = 0 | out=000000
+Tempo=10 | clear=0 | input0 = 0 | out=000000
+Tempo=15 | clear=0 | input0 = 1 | out=100000
+Tempo=20 | clear=0 | input0 = 0 | out=100000
+Tempo=25 | clear=0 | input0 = 0 | out=010000
+Tempo=35 | clear=0 | input0 = 0 | out=001000
+Tempo=45 | clear=0 | input0 = 0 | out=000100
+Tempo=55 | clear=0 | input0 = 0 | out=000010
+Tempo=65 | clear=0 | input0 = 0 | out=000001
+Tempo=75 | clear=0 | input0 = 0 | out=100000
+Tempo=80 | clear=0 | input0 = 1 | out=100000
+Tempo=85 | clear=0 | input0 = 0 | out=010000
+Tempo=95 | clear=0 | input0 = 0 | out=001000
+Tempo=105 | clear=0 | input0 = 0 | out=000100
+Tempo=115 | clear=1 | input0 = 0 | out=000000
+
+04) Projetar e descrever em Logisim e Verilog um módulo
+para implementar um registrador de deslocamento
+circular, em anel torcido ("twisted ring"), para a esquerda,
+com 6 bits (estágios), com carga unitária no primeiro estágio.
+DICA: Ver modelo anexo.
+
+[Running] Guia_1404.v
+Tempo=0 | clear=1 | input0 = 0 | out=xxxxxx
+Tempo=5 | clear=1 | input0 = 0 | out=000000
+Tempo=10 | clear=0 | input0 = 0 | out=000000
+Tempo=15 | clear=0 | input0 = 1 | out=000001
+Tempo=20 | clear=0 | input0 = 0 | out=000001
+Tempo=25 | clear=0 | input0 = 0 | out=000011
+Tempo=35 | clear=0 | input0 = 0 | out=000111
+Tempo=45 | clear=0 | input0 = 0 | out=001111
+Tempo=55 | clear=0 | input0 = 0 | out=011111
+Tempo=65 | clear=0 | input0 = 0 | out=111111
+Tempo=75 | clear=0 | input0 = 0 | out=111110
+Tempo=80 | clear=0 | input0 = 1 | out=111110
+Tempo=85 | clear=0 | input0 = 0 | out=111100
+Tempo=95 | clear=0 | input0 = 0 | out=111000
+Tempo=105 | clear=0 | input0 = 0 | out=110000
+Tempo=115 | clear=0 | input0 = 0 | out=100000
+Tempo=125 | clear=0 | input0 = 0 | out=000000
+Tempo=135 | clear=0 | input0 = 0 | out=000001
+Tempo=145 | clear=0 | input0 = 0 | out=000011
+Tempo=155 | clear=1 | input0 = 0 | out=00000
+
+05.) Projetar e descrever em Logisim e Verilog um módulo
+para implementar um conversor paralelo-série
+para 6 bits.
+DICA: Ver modelo anexo.
+
+    
+[Running] Guia_1405.v
+Tempo=0 | clear=1 | load=0 | input = 0xxxxx | out=xxxxxx
+Tempo=5 | clear=1 | load=0 | input = 0xxxxx | out=000000
+Tempo=10 | clear=0 | load=1 | input = 11000x | out=000000
+Tempo=15 | clear=0 | load=1 | input = 110000 | out=110000
+Tempo=25 | clear=0 | load=1 | input = 000000 | out=011000
+Tempo=35 | clear=0 | load=1 | input = 000000 | out=001100
+Tempo=40 | clear=0 | load=0 | input = 000000 | out=001100
+Tempo=45 | clear=0 | load=0 | input = 000000 | out=000110
+Tempo=55 | clear=0 | load=0 | input = 000000 | out=000011
+Tempo=65 | clear=0 | load=0 | input = 000000 | out=000001
+Tempo=75 | clear=0 | load=0 | input = 000000 | out=000000
+Tempo=100 | clear=0 | load=1 | input = 000000 | out=000000
+Tempo=110 | clear=0 | load=1 | input = 000100 | out=000000
+Tempo=115 | clear=0 | load=1 | input = 000100 | out=000100
+Tempo=120 | clear=0 | load=1 | input = 000000 | out=000100
+Tempo=125 | clear=0 | load=1 | input = 000000 | out=000010
+Tempo=130 | clear=0 | load=0 | input = 000000 | out=000010
+Tempo=135 | clear=0 | load=0 | input = 000000 | out=000001
+Tempo=140 | clear=1 | load=0 | input = 000000 | out=000001
+Tempo=145 | clear=1 | load=0 | input = 000000 | out=000000
+Tempo=150 | clear=0 | load=1 | input = 111110 | out=000000
+Tempo=155 | clear=0 | load=1 | input = 111111 | out=111111
+Tempo=165 | clear=0 | load=1 | input = 000001 | out=011111
+Tempo=170 | clear=0 | load=1 | input = 000000 | out=011111
+Tempo=175 | clear=0 | load=1 | input = 000000 | out=001111
+Tempo=180 | clear=0 | load=0 | input = 000000 | out=001111
+Tempo=185 | clear=0 | load=0 | input = 000000 | out=000111
+Tempo=195 | clear=0 | load=0 | input = 000000 | out=000011
+Tempo=205 | clear=0 | load=0 | input = 000000 | out=000001
+Tempo=215 | clear=0 | load=0 | input = 000000 | out=000000
+
+Extras
+06.) Projetar e descrever em Logisim e Verilog um módulo
+para implementar um registrador de deslocamento
+circular ("ring") para a esquerda, com 5 bits (estágios),
+com carga inicial em todos os estágios.
+
+Running] Guia_1406.v
+Tempo=0 | clear=1 | load=0 | input = 0xxxx | out=xxxxx
+Tempo=5 | clear=1 | load=0 | input = 0xxxx | out=00000
+Tempo=10 | clear=0 | load=1 | input = 1100x | out=00000
+Tempo=15 | clear=0 | load=1 | input = 11000 | out=11000
+Tempo=25 | clear=0 | load=1 | input = 00000 | out=10001
+Tempo=35 | clear=0 | load=1 | input = 00000 | out=00011
+Tempo=40 | clear=0 | load=0 | input = 00000 | out=00011
+Tempo=45 | clear=0 | load=0 | input = 00000 | out=00110
+Tempo=55 | clear=0 | load=0 | input = 00000 | out=01100
+Tempo=65 | clear=0 | load=0 | input = 00000 | out=11000
+Tempo=75 | clear=0 | load=0 | input = 00000 | out=10001
+Tempo=85 | clear=0 | load=0 | input = 00000 | out=00011
+Tempo=95 | clear=0 | load=0 | input = 00000 | out=00110
+Tempo=100 | clear=0 | load=1 | input = 00000 | out=00110
+Tempo=105 | clear=0 | load=1 | input = 00000 | out=01100
+Tempo=110 | clear=0 | load=1 | input = 00010 | out=01100
+Tempo=115 | clear=0 | load=1 | input = 00010 | out=11010
+Tempo=120 | clear=0 | load=1 | input = 00000 | out=11010
+Tempo=125 | clear=0 | load=1 | input = 00000 | out=10101
+Tempo=130 | clear=0 | load=0 | input = 00000 | out=10101
+Tempo=135 | clear=0 | load=0 | input = 00000 | out=01011
+Tempo=140 | clear=1 | load=0 | input = 00000 | out=01011
+Tempo=145 | clear=1 | load=0 | input = 00000 | out=00000
+Tempo=150 | clear=0 | load=1 | input = 00000 | out=00000
+Tempo=155 | clear=0 | load=1 | input = 00001 | out=00001
+Tempo=165 | clear=0 | load=1 | input = 00000 | out=00010
+Tempo=175 | clear=0 | load=0 | input = 00000 | out=00100
+Tempo=185 | clear=0 | load=0 | input = 00000 | out=01000
+Tempo=195 | clear=0 | load=0 | input = 00000 | out=10000
+Tempo=205 | clear=0 | load=0 | input = 00000 | out=00001
+Tempo=215 | clear=0 | load=0 | input = 00000 | out=00010
+Tempo=225 | clear=0 | load=0 | input = 00000 | out=00100
+
+07.) Projetar e descrever em Logisim e Verilog um módulo
+para implementar um registrador de deslocamento
+circular, em anel torcido ("twisted ring"), para a direita,
+com 5 bits (estágios),
+com carga inicial ("load/preset") em todos os estágios.
+
+    
+[Running] Guia_1407.v
+Tempo=0 | clear=1 | load=0 | input = 0xxxx | out=xxxxx
+Tempo=5 | clear=1 | load=0 | input = 0xxxx | out=00000
+Tempo=10 | clear=0 | load=1 | input = 1111x | out=00000
+Tempo=15 | clear=0 | load=1 | input = 11111 | out=11111
+Tempo=25 | clear=0 | load=1 | input = 00001 | out=11111
+Tempo=30 | clear=0 | load=1 | input = 00000 | out=11111
+Tempo=35 | clear=0 | load=1 | input = 00000 | out=11110
+Tempo=40 | clear=0 | load=0 | input = 00000 | out=11110
+Tempo=45 | clear=0 | load=0 | input = 00000 | out=11100
+Tempo=55 | clear=0 | load=0 | input = 00000 | out=11000
+Tempo=65 | clear=0 | load=0 | input = 00000 | out=10000
+Tempo=75 | clear=0 | load=0 | input = 00000 | out=00000
+Tempo=85 | clear=0 | load=0 | input = 00000 | out=00001
+Tempo=95 | clear=0 | load=0 | input = 00000 | out=00011
+Tempo=100 | clear=0 | load=1 | input = 00000 | out=00011
+Tempo=105 | clear=0 | load=1 | input = 00000 | out=00111
+Tempo=110 | clear=0 | load=1 | input = 10000 | out=00111
+Tempo=115 | clear=0 | load=1 | input = 10000 | out=11111
+Tempo=120 | clear=0 | load=1 | input = 00000 | out=11111
+Tempo=125 | clear=0 | load=1 | input = 00000 | out=11110
+Tempo=130 | clear=0 | load=0 | input = 00000 | out=11110
+Tempo=135 | clear=0 | load=0 | input = 00000 | out=11100
+Tempo=140 | clear=1 | load=0 | input = 00000 | out=11100
+Tempo=145 | clear=1 | load=0 | input = 00000 | out=00000
+Tempo=150 | clear=0 | load=1 | input = 00010 | out=00000
+Tempo=155 | clear=0 | load=1 | input = 00011 | out=00011
+Tempo=165 | clear=0 | load=1 | input = 00000 | out=00111
+Tempo=175 | clear=0 | load=0 | input = 00000 | out=01111
+Tempo=185 | clear=0 | load=0 | input = 00000 | out=11111
+Tempo=195 | clear=0 | load=0 | input = 00000 | out=11110
+Tempo=205 | clear=0 | load=0 | input = 00000 | out=11100
+Tempo=215 | clear=0 | load=0 | input = 00000 | out=11000
+Tempo=225 | clear=0 | load=0 | input = 00000 | out=1000

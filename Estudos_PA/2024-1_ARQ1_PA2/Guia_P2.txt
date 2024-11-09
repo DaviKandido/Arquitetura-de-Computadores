@@ -1,0 +1,157 @@
+/*
+    identificação: 
+
+Guia_P2 - 07 / 11 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+
+Para as questões seguintes, supor a tabela abaixo.
+
+     _________________________________
+    | m | at | bt | c | at+1  | bt+1  |
+    |---|----|----|---|-------|-------|
+    | 0 | 0  | 0  | 0 | 0     | 0     |
+    | 1 | 0  | 0  | 1 | 0     | 1     |
+    | 2 | 0  | 1  | 0 | 0     | 1     |
+    | 3 | 0  | 1  | 1 | 1     | 0     |
+    | 4 | 1  | 0  | 0 | 1     | 0     |
+    | 5 | 1  | 0  | 1 | 0     | 1     |
+    | 6 | 1  | 1  | 0 | 1     | 1     |
+    | 7 | 1  | 1  | 1 | 1     | 0     |
+    |___|____|____|___|_______|_______|
+
+                        __ Acompanha a entrada ou seja (a+1)
+                      |
+    __________________|______________________    ______________________________________
+    | m | at | at+1 | Da |  JaKa | Ta | SaRa |   | bt | bt+1  | Db |  JbKb | Tb | SaRa |    OBS: Considerei o uso do JK sem estar em 
+    |---|----|------|----|-------|----|------|   |----|-------|----|-------|----|------|         toggle, caso considerado as expressões 
+    | 0 | 0  | 0    |  0 |   00  |  0 |  00  |   | 0  | 0     |  0 |   00  |  0 |  00  |         resultantes em 10 ou 01 poderiam
+    | 1 | 0  | 0    |  0 |   00  |  0 |  00  |   | 0  | 1     |  1 |   10  |  1 |  10  |         ser substituídas por 11 (toggle)
+    | 2 | 0  | 0    |  0 |   00  |  0 |  00  |   | 1  | 1     |  1 |   00  |  0 |  00  |
+    | 3 | 0  | 1    |  1 |   10  |  1 |  10  |   | 1  | 0     |  0 |   01  |  1 |  01  |
+    | 4 | 1  | 1    |  1 |   00  |  0 |  00  |   | 0  | 0     |  0 |   00  |  0 |  00  |
+    | 5 | 1  | 0    |  0 |   01  |  1 |  01  |   | 0  | 1     |  1 |   10  |  1 |  10  |
+    | 6 | 1  | 1    |  1 |   00  |  0 |  00  |   | 1  | 1     |  1 |   00  |  0 |  00  |
+    | 7 | 1  | 1    |  1 |   00  |  0 |  00  |   | 1  | 0     |  0 |   01  |  1 |  00  |
+    |___|____|______|____|_______|____|______|   |____|_______|____|_______|____|______|
+                            |      |
+                            |      |
+                            |      +--- Alterna com a entrada caso T = 1, ou seja (~(a+1))
+                            |
+                            +------ Alterna com a entrada se J = 1 e K = 1, caso J = 1 e K = 0 saida = 1, caso J = 0 e K = 1 saida = 0
+
+
+01.) [Texto] Montar as expressões por mintermos dos flip-flops
+
+a.) SoP (Da) = SoP (3,4,6,7) = at'•bt•c + at•bt'•c' + at•bt•c' +  at•bt•c
+    SoP (Db) = SoP (1,2,3,6) = at'•bt'•c + at'•bt•c' + at'•bt•c +  at•bt•c'
+
+b.)-SoP (Ja) = SoP (3)    = at'•bt•c                                 
+    SoP (Ka) = SoP (5)    = at•bt'•c 
+   -SoP (Jb) = SoP (1,5)  = at'•bt'•c + at•bt'•c 
+    SoP (Kb) = SoP (3,7)  = at'•bt•c + at•bt•c
+
+c.) SoP (Ta) = SoP (3,5)      = at'•bt•c + at•bt'•c
+    SoP (Tb) = SoP (1,3,5,7)  = at'•bt'•c + at'•bt•c + at•bt'•c + at•bt•c
+
+
+
+02.) [Texto] Montar as expressões compactas por MAXTERMOS dos flip-flops
+
+
+a.) PoS (Da) = PoS (0,1,2,5) = (At+Bt+C) • (At+Bt+C') • (At+Bt'+C) • (At'+Bt+C')
+    PoS (Db) = PoS (0,4,5,7) = (At+Bt+C) • (At'+Bt+C) • (At'+Bt+C') • (At'+Bt'+C')
+
+b.)-PoS (Ja) = PoS (0,1,2,4,5,6,7) = (At+Bt+C) • (At+Bt+C') • (At+Bt'+C) • (At'+Bt+C)• (At'+Bt+C') • (At'+Bt'+C) • (At'+Bt'+C')
+    PoS (Ka) = PoS (0,1,2,3,4,6,7) = (At+Bt+C) • (At+Bt+C') • (At+Bt'+C) • (At+Bt'+C') • (At'+Bt+C) • (At'+Bt'+C) • (At'+Bt'+C')
+   -PoS (Jb) = PoS (0,2,3,4,6,7)   = (At+Bt+C) • (At+Bt'+C) • (At+Bt'+C') • (At'+Bt+C)• (At'+Bt'+C) • (At'+Bt'+C')
+    PoS (Kb) = PoS (0,1,2,4,5,6)   = (At+Bt+C) • (At+Bt+C') • (At+Bt'+C) • (At'+Bt+C) • (At'+Bt+C')• (At'+Bt'+C)
+
+c.) PoS (Ta) = PoS (0,1,2,4,6,7) = (At+Bt+C) • (At+Bt+C') • (At+Bt'+C) • (At'+Bt+C) • (At'+Bt'+C)• (At'+Bt'+C')
+    PoS (Tb) = PoS (0,2,4,6)     = (At+Bt+C) • (At+Bt'+C) • (At'+Bt+C) • (At'+Bt'+C)
+
+
+
+03.) [Texto] Montar os mapas de Veitch-Karnaugh correspondentes e simplificar suas expressões SoP:
+
+ ______________      ______________      ______________      ______________  
+|  Da  |       |    |  Sa  |       |    |  Ra  |       |    |  Ta  |       |  
+|______|_______|    |______|_______|    |______|_______|    |______|_______|  
+| ab\c | 0 | 1 |    | ab\c | 0 | 1 |    | ab\c | 0 | 1 |    | ab\c | 0 | 1 |  
+|------|---|---|    |------|---|---|    |------|---|---|    |------|---|---|  
+| 00   | 0 | 0 |    | 00   | 0 | 0 |    | 00   | 0 | 0 |    | 00   | 0 | 0 |  
+|------|---|---|    |------|---|---|    |------|---|---|    |------|---|---|  
+| 01   | 0 | 1 |    | 01   | 0 | 1 |    | 01   | 0 | 0 |    | 01   | 0 | 1 |  
+|------|---|---|    |------|---|---|    |------|---|---|    |------|---|---|  
+| 11   | 1 | 1 |    | 11   | 0 | 0 |    | 11   | 0 | 0 |    | 11   | 0 | 0 |  
+|------|---|---|    |------|---|---|    |------|---|---|    |------|---|---|  
+| 10   | 1 | 0 |    | 10   | 0 | 0 |    | 10   | 0 | 1 |    | 10   | 0 | 1 |  
+|______|___|___|    |______|___|___|    |______|___|___|    |______|___|___|  
+
+ ______________      ______________      ______________      ______________  
+|  Sb  |       |    |  Rb  |       |    |  Jb  |       |    |  Kb  |       |  
+|______|_______|    |______|_______|    |______|_______|    |______|_______|  
+| ab\c | 0 | 1 |    | ab\c | 0 | 1 |    | ab\c | 0 | 1 |    | ab\c | 0 | 1 |  
+|------|---|---|    |------|---|---|    |------|---|---|    |------|---|---|  
+| 00   | 0 | 1 |    | 00   | 0 | 0 |    | 00   | 0 | 1 |    | 00   | 0 | 0 |  
+|------|---|---|    |------|---|---|    |------|---|---|    |------|---|---|  
+| 01   | 0 | 0 |    | 01   | 0 | 1 |    | 01   | 0 | 0 |    | 01   | 0 | 1 |  
+|------|---|---|    |------|---|---|    |------|---|---|    |------|---|---|  
+| 11   | 0 | 0 |    | 11   | 0 | 1 |    | 11   | 0 | 0 |    | 11   | 0 | 1 |  
+|------|---|---|    |------|---|---|    |------|---|---|    |------|---|---|  
+| 10   | 0 | 1 |    | 10   | 0 | 0 |    | 10   | 0 | 1 |    | 10   | 0 | 0 |  
+|______|___|___|    |______|___|___|    |______|___|___|    |______|___|___|  
+
+
+
+a.)-SoP (Da) = SoP (3,4,6,7) = b•c + a•c'                      
+    SoP (Sa) = SoP (3)       = a•b'•c'
+    SoP (Ra) = SoP (4)       = a'•b•c'
+    SoP (Ta) = SoP (3,5)     =  a'•b•c + a•b'•c
+
+b.)-SoP (Sb) = SoP (1,5)     = b'•c                 
+    SoP (Rb) = SoP (3,7)     = b•c 
+    SoP (Jb) = SoP (1,5)     = b'•c
+    SoP (Kb) = SoP (3,7)     = b•c
+
+     ______________
+    |  Tb  |       |
+    |______|_______|
+    | ab\c | 0 | 1 |
+    |------|---|---|
+    | 00   | 0 | 1 |
+    |------|---|---|
+    | 01   | 0 | 1 |
+    |------|---|---|
+    | 11   | 0 | 1 |
+    |------|---|---|
+    | 10   | 0 | 1 |
+    |______|___|___| 
+
+ SoP (Kb) = SoP (1,3,5,7) = c 
+ 
+
+04.) [Logisim] Montar os circuitos simplificados correspondentes:
+
+a.) Da     = SoP (Da) = SoP (3,4,6,7)     = b•c + a•c'
+b.) Ta     = SoP (Ta) = SoP (3,5)         = a'•b•c + a•b'•c
+c.) SbRb   = Sb = SoP (Sb) = SoP (1,5)    = b'•c  
+           = Rb = SoP (Rb) = SoP (3,7)    = b•c
+d.) Tb     = SoP (Kb) = SoP (1,3,5,7)    = c
+
+-OBS: Circuitos feitos no logisim e jflap, arquivo PA_02.circ e xxxxx.jff
+
+
+5.) [Logisim]
+
+a.) Montar um registrador de deslocamento para a direita (a,b,c,d) com carga inicial mediante LOAD.
+b.) Montar um registrador de deslocamento para a esquerda (a,b,c,d) com carga inicial mediante LOAD.
+
+
+Extras
+06.) Montar um reconhecedor por Mealy, com repetição, para as sequências 000 e 111.
+07.) Montar um reconhecedor por Moore, com repetição, para as sequências 000 e 111
