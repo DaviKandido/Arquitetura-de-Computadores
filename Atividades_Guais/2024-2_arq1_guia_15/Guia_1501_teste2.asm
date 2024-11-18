@@ -1,0 +1,9 @@
+
+ LXI H,0100 
+ MOV A,M 
+ INX H 
+ ADD M 
+ INX H 
+ SUB M
+ STA 0103
+ HLT 

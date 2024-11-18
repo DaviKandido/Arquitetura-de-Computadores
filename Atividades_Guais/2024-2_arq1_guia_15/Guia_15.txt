@@ -1,0 +1,418 @@
+/*
+    identificação: 
+
+Guia_15 - 15 / 11 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+
+Guia_1500
+
+
+; 857859 - Davi Cândido de Almeida
+
+ LXI H,0100 
+ MOV A,M 
+ INX H 
+ ADD M 
+ STA 0103
+ HLT 
+
+
+
+Exercícios
+01.) Implementar um programa (Guia_1501.txt) para o processador 8085 para
+calcular o resultado da expressão aritmética abaixo,
+usando dados com 8 bits.
+dado04 = dado01 + dado02 - dado03
+
+
+; 857859 - Davi Cândido de Almeida
+ 
+; Guarda Valores nos enderecos a se usar
+MVI B,05H
+LXI H,C100
+MOV M,B
+
+MVI B,03H
+LXI H,C101
+MOV M,B
+
+MVI B,03H
+LXI H,C102
+MOV M,B
+
+;Guarda o primeiro Valor
+LXI H,C100
+MOV A,M
+
+
+;Soma segundo Valor
+INX H
+ADD M
+
+;Subtrai segundo Valor
+INX H
+SUB M
+
+;Guarda resultado na memoria
+INX H
+MOV M,A
+
+HLT
+
+
+
+02.) Implementar um programa (Guia_1502.txt) para o processador 8085 para
+calcular o resultado da expressão aritmética abaixo,
+usando dados com 16 bits (sinal+amplitude).
+Sugestão: Usar complemento de 2 para a subtração.
+dado05 = dado01 + dado02 + dado03 - dado04
+
+
+; 857859 - Davi Cândido de Almeida
+
+; Valores de cada número guardados um abaixo do outro (2 unidades de memória cada)
+; Valor final em C140 e C141
+ 
+; Guarda valores nos endereços a se usar
+
+; Primeiro valor
+LXI H, C100
+MVI M, 01H
+LXI H, C101
+MVI M, 02H
+
+; Segundo valor
+LXI H, C110
+MVI M, 01H
+LXI H, C111
+MVI M, 02H
+
+; Terceiro valor
+LXI H, C120
+MVI M, 01H
+LXI H, C121
+MVI M, 02H
+
+; Efetuação das somas
+
+; Soma dos dois primeiros índices de 8 bits (à direita)
+LDA C101
+LXI H, C111
+ADD M
+
+; Guarda resultado em endereço auxiliar
+STA C104
+
+; Soma dos dois segundos índices de 8 bits (à esquerda)
+LXI H, C100
+JNC AFTER1
+INR A
+AFTER1: LXI H, C110
+ADD M
+
+STA C103
+
+; Soma resultado parcial com terceiro valor
+LDA C104
+LXI H, C121
+ADD M
+STA C104
+
+LDA C120
+JNC AFTER2
+INR A
+AFTER2: LXI H, C103
+ADD M
+STA C103
+
+; Subtração
+; Transforma em complemento de 2 e guarda em endereço auxiliar
+LXI H, C131
+MOV A, M
+CMA
+MOV B, A
+INR B
+
+LXI H, C130
+MOV A, M
+CMA
+JNC AFTER3
+INR A
+AFTER3: STA C106
+LXI H, C107
+MOV M, B
+
+; Subtrai a partir do complemento de 2 e guarda resultado
+LDA C104
+LXI H, C107
+ADD M
+STA C140
+
+LDA C103
+JNC AFTER4
+INR A
+AFTER4: LXI H, C106
+ADD M
+STA C141
+
+HLT
+
+
+
+03.) Implementar um programa (Guia_1503.txt) para o processador 8085 para
+calcular o resultado da expressão aritmética abaixo,
+usando dados com 8 bits codificados em BCD.
+DICA: Se passar de 9, precisará ajustar o próximo bit para converter a saída.
+dado05 = dado01 - dado02 + dado03 - dado04
+
+
+; 857859 - Davi Cândido de Almeida
+
+; Carregar endereço inicial dos dados
+LXI H, 0100
+
+; Carregar dado01 no acumulador A
+MOV A,  M
+
+; Subtrair dado02 e ajustar para BC
+INX H
+SUB M
+DAA
+
+; Adicionar dado03 e ajustar para BC
+INX H
+ADD M
+DAA
+
+; Adicionar dado04 e ajustar para BC
+INX H
+SUB M
+DAA
+
+; Armazenar o resultado em dado05
+INX H
+MOV M,  A
+
+HLT
+
+
+04.) Implementar um programa (Guia_1504.txt) para o processador 8085 para
+calcular o resultado da expressão aritmética abaixo,
+usando dados com 8 bits.
+DICA: Para o dobro, somar o acumulador com ele mesmo.
+dado03 = 2 * (dado01 - 2 * dado02)
+
+
+; 857859 - Davi Cândido de Almeida
+ 
+; Guarda Valores nos enderecos a se usar
+MVI B,05H
+LXI H,C100
+MOV M,B
+
+MVI B,03H
+LXI H,C101
+MOV M,B
+
+
+;Guarda o segundo Valor
+LXI H,C101
+MOV A,M
+
+;Faz o dobro do segundo Valor
+ADD A
+
+;Subtrai com o segundo Valor
+LXI H,C100
+SUB M
+
+;Faz o dobro do resultado
+ADD A
+
+;Guarda resultado na memoria no endereco C110
+LXI H,C110
+MOV M,A
+
+HLT
+
+
+05.) Implementar um programa (Guia_1505.txt) para o processador 8085 para
+calcular o resultado da expressão aritmética abaixo,
+usando dados com 8 bits.
+DICA: Se usar deslocamentos/rotações para multiplicar e dividir,
+ levar em consideração o bit do sinal.
+ Observar que há instruções de rotação e não de simples deslocamentos.
+ Melhor usar somas e comparações.
+dado03 = dado01 * 8 + dado02 / 2
+
+
+; 857859 - Davi Cândido de Almeida
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Definição de funções
+
+INICIALIZAR:
+	MVI A,05H        
+	STA C100
+	MVI A,04H        
+	STA C110
+	RET       ; Retorna a MAIN       
+
+DIVIDIR:	
+	RRC       ; Rotação no A, divisão por 2       
+	RET
+
+MULT:
+	MVI A,00H       ; Inicializa Somas/Mult em 0  
+BACK:	ADD B         
+	DCR C          
+	JNZ BACK       
+	RET
+
+MAIN:	
+	CALL INICIALIZAR ;Função para inicializar variaveis
+
+	; Multiplicação: 8 * dado01 (C100)
+	MVI C,08H       ; Guarda numero para multiplicação
+	LXI H,C100
+	MOV B,M         
+	CALL MULT       
+	STA C102        ;Guarda multiplicação
+
+	; Divisão: dado02 / 2 (C110)
+	LDA C110        
+	CALL DIVIDIR    
+	STA C112        ;Guarda Divisão
+
+	; Soma final: (8 * dado01) + (dado02 / 2)
+	LDA C112        
+	LXI H,C102      
+	ADD M           ; Efetua soma final
+	STA C120        ; Guarda na memoria resultado
+
+	HLT             ; Fim
+
+
+Extras
+06.) Implementar um programa (Guia_1506.txt) para o processador 8085 para
+calcular o resultado da expressão aritmética abaixo,
+usando dados com 8 bits.
+dado03 = 3 * dado01 - 2 * dado02
+
+
+; 857859 - Davi Cândido de Almeida
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Definição de funções
+
+INICIALIZAR:
+	LXI H,C100
+	MVI M,06	 ; Inicializa dado01 = 6
+	LXI H,C110
+	MVI M,05	; Inicializa dado02 = 5
+
+	RET		; Retorna a MAIN
+
+MULT: 	
+	MOV B,M		; Coloca no registrador o valor a se multiplicar
+	MVI A,00H
+           BACK:  ADD B
+	DCR C
+	DAA
+	JNZ BACK		; Condição de incremento
+	
+	RET
+
+
+MAIN:
+	CALL INICIALIZAR	; Inicializa variaveis
+
+	;Primeira Multiplicação
+	LXI H,C100
+	MVI C,03H		; Defini o valor a se multiplicar
+	CALL MULT
+	STA C102
+	
+	;Segunda Multiplicação
+	LXI H,C110
+	MVI C,02H
+	CALL MULT
+	STA C112
+
+	; Subtração final: (dado01 * 3) - (dado02 * 2)
+	LDA C102          
+	LXI H,C112        
+	SUB M             
+	STA C130          ; Armazena o resultado final em C130
+
+	HLT               ; Fim do programa
+
+
+07.) Implementar um programa (Guia_1507.txt) para o processador 8085 para
+calcular o resultado da expressão aritmética abaixo,
+usando dados com 8 bits.
+DICA: Se usar deslocamentos/rotações para multiplicar e dividir,
+ levar em consideração o bit do sinal.
+ Observar que há instruções de rotação e não de simples deslocamentos.
+ Melhor usar somas e comparações.
+dado03 = dado01 % 2 + dado02 / 4
+
+
+; 857859 - Davi Cândido de Almeida
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Definição de funções
+
+INICIALIZAR:
+	LXI H,C100
+	MVI M,09H	; Inicializa dado01 = 10
+	LXI H,C110	; Inicializa dado02 = 8
+	MVI M,08H 
+
+	RET
+
+DIVIDIRx4:
+	MOV A,M
+	RRC	; Rotação no A, divisão por 2 
+	RRC	; Rotação no A, divisão por 2 novamente (Dividir por 4)
+
+	RET
+
+RESTOx2:	
+	MOV A,M
+	ANI 01H         ; Isola o LSB (A <- A AND 01H), Resto por 2
+
+	RET
+	
+
+MAIN: 
+	CALL INICIALIZAR
+
+	; Calcula resto de dados1%2
+	LXI H,C100
+	CALL RESTOx2
+	STA C102
+
+	; Calcula divisão de dados2/4
+	LXI H,C110
+	CALL DIVIDIRx4
+	STA C112
+
+	; Soma final
+	LDA C102
+	LXI H,C112
+	ADD M	      ; Efetua Soma final
+	STA C130	  ; Guarda na memoria resultado em C130
+
+	HLT	; Fim
