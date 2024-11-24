@@ -1,0 +1,365 @@
+/*
+    identificação: 
+
+Guia_16 - 24 / 11 / 2024
+
+Nome: Davi Cândido de Almeida
+Matricula: 857859
+Código de Pessoa: 1527368
+
+*/
+
+
+
+01.) Implementar um programa (Guia_1601.txt) para o processador 8085 para
+calcular o produto (IMUL) de dois dados
+com 8 bits cada.
+DICA: Usar somas sucessivas e tamanho maior que 8 bits para o resultado.
+dado03 = dado01 * dado02
+
+
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Função de Inicialização
+INIT:
+    LXI H,C100      ; Aponta para o início da memória
+    MVI M,04H       ; Inicializa dado01 = 4
+    INX H
+    MVI M,03H       ; Inicializa dado02 = 3
+    RET
+
+; Função de Multiplicação por somas sucessivas
+MULT:
+    MVI A,OOH         
+    MOV B,M          ; Multiplicando (dado01) no registrador A
+    INX H
+    MOV C,M         ; Multiplicador (dado02) no registrador C
+BACK:
+    ADC B           
+    DCR C            
+    JNZ BACK         ; Repete enquanto o contador não for zero
+    RET
+
+; Programa Principal
+MAIN: 
+    CALL INIT        ; Inicializa variáveis
+
+    LXI H,C100	   ; Aponta para os dados na memória
+    CALL MULT        ; Chama a função de multiplicação
+
+    STA C103        ; Armazena o resultado
+
+    HLT              ; Finaliza o programa
+
+END:
+
+
+02.) Implementar um programa (Guia_1602.txt) para o processador 8085 para
+calcular o quociente inteiro (IDIV) entre dois dados
+com 8 bits cada.
+DICA: Usar subtrações sucessivas e tamanho maior que 8 bits para o resultado.
+dado03 = dado01 / dado02
+
+
+
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Função de Inicialização
+INIT:
+    LXI H,C100      ; Aponta para o início da memória
+    MVI M,0FH       ; Inicializa dado01 = 16 em Hex
+    INX H
+    MVI M,07H       ; Inicializa dado02 = 7
+    RET
+
+
+; Função de Dividir por Subtrações sucessivas
+IDIV:
+	MVI B,00	; Inicializa o registrador B (contador de subtrações) com 0
+BACK:
+    SUB C           
+    JC FIM          ; Se o carry for gerado -> A < C (não pode subtrair mais)
+    INR B           ; Incrementa B (contador de subtrações)
+    JMP BACK        ; Continua subtraindo enquanto A >= C
+FIM:
+    MOV A,B         ; Move o valor de B (contador de subtrações) para o acumulador A (quociente)
+    RET
+
+; Programa Principal
+MAIN: 
+    CALL INIT        ; Inicializa variáveis
+    LXI H,C100      ; Aponta para os dados na memória
+    MOV A,M
+    INX H 
+    MOV C,M  
+    CALL IDIV        ; Chama a função de multiplicação
+    STA C103        ; Armazena o resultado
+
+    HLT              ; Finaliza o programa
+
+END:
+
+
+
+
+03.) Implementar um programa (Guia_1603.txt) para o processador 8085 para
+calcular o resto inteiro (IMOD) da divisão entre dois dados
+com 8 bits cada.
+DICA: Usar subtrações sucessivas.
+dado03 = dado01 % dado02
+
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Função de Inicialização
+INIT:
+    LXI H,C100      ; Aponta para o início da memória
+    MVI M,10H       ; Inicializa dado01 = 16 em Hex
+    INX H
+    MVI M,07H       ; Inicializa dado02 = 7
+    RET
+
+; Função para calcula modulo por subtrações sucessivas
+IMOD:
+	MOV A,B
+	MVI B,00	; Inicializa o registrador B (contador de subtrações) com 0
+BACK: INR B	    ; Incrementa B (contador de subtrações)
+	  SUB C
+      JC FIM    ; Se o carry for gerado -> não pode subtrair mais (pula para FIM)
+	  JNZ BACK
+FIM:  ADD C
+	  RET
+
+; Programa Principal
+MAIN: 
+    CALL INIT        ; Inicializa variáveis
+    LXI H,C100       ; Aponta para os dados na memória
+    MOV B,M
+    INX H 
+    MOV C,M  
+    CALL IMOD        ; Chama a função de multiplicação
+    STA C103         ; Armazena o resultado
+
+    HLT              ; Finaliza o programa
+
+END:
+
+
+
+04.) Implementar um programa (Guia_1604.txt) para o processador 8085 para
+encontrar o maior valor de um arranjo.
+DICA: Usar o exemplo do BubbleSort, mas não ordenar. Usar a repetição.
+
+
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Função de Inicialização
+INIT:
+    LXI H,C100      ; Aponta para o início da memória
+    MVI M,10H      
+    INX H
+    MVI M,07H       
+    INX H
+    MVI M,42H  
+    INX H
+    MVI M,20H
+    INX H
+    MVI M,35H
+    INX H
+    MVI M,52H
+    INX H
+    MVI M,18H
+    INX H
+    MVI M,39H
+    INX H
+    MVI M,47H
+    INX H
+    MVI M,28H        
+    RET
+
+; Função para encontra o maior numero em um arranjo
+GETMAIOR: 
+    MOV A,M
+    BACK: INX H
+          CMP M
+          JNC MENOR
+          MOV A,M
+   MENOR: DCR C
+          JNZ BACK
+          RET 
+
+; Programa Principal
+MAIN: 
+    CALL INIT        ; Inicializa variáveis
+    LXI H,C100       ; Aponta para os dados na memória
+
+    MVI C,10H  
+    CALL GETMAIOR        ; Chama a função de GetMaior
+    STA C110         ; Armazena o resultado
+
+    HLT              ; Finaliza o programa
+
+END:
+
+
+
+05.) Implementar um programa (Guia_1605.txt) para o processador 8085 para
+converter um valor em BCD (Binary Coded Decimal)
+para o hexadecimal equivalente.
+DICA: 24 (BCD) = 24 (10) = HI (24) * 10 + LOW (24) = 2 * 10 + 4
+ = 0000 0010(2) * 0000 1010(2) + 0000 0100(2) = 0001 0100(2) + 0001 1000(2) = 18 (16)
+dado02 = HI (dado01) * 10 + LOW (dado02)
+
+
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Função de Inicialização
+INIT:
+    LXI H,C100      ; Aponta para o início da memória
+    MVI M,22      
+    LXI H,C110 
+    MVI M,43             
+    RET
+
+; Função para converter um valor em BCD (Binary Coded Decimal) para o hexadecimal equivalente.
+PARSETOHEXA: 
+    MOV D,B
+	MOV E,B
+	MVI A,0F
+	ANA E
+	MOV E,A
+	MVI A,F0
+	ANA D
+	RAR
+	RAR
+	RAR
+	RAR
+	MOV D,A
+	MVI A,00
+	MVI C,0A
+MULT:   ADD D
+	    DCR C
+	    JNZ MULT
+	ADD E
+	RET
+
+; Programa Principal
+MAIN: 
+    CALL INIT               ; Inicializa variáveis
+    LXI H,C100              ; Aponta para os dados na memória
+    MOV B,M
+    CALL PARSETOHEXA        ; Chama a função de PARSETOHEXA
+    STA C102                ; Armazena o resultado 1
+
+    LXI H,C110
+    MOV B,M
+    CALL PARSETOHEXA        ; Chama a função de PARSETOHEXA
+    STA C112                ; Armazena o resultado 2
+
+    HLT                     ; Finaliza o programa
+
+END:
+
+; Entrada 22 -> saida 16 em hexadecimal
+; Entrada 43 -> saida 2B em hexadecimal
+
+
+Extras
+06.) Implementar um programa (Guia_1606.txt) para o processador 8085 para
+calcular o quadrado de um dado de 8 bits.
+DICA: Somar os ímpares: 52 = 1+3+5+7+9 = 25.
+dado02 = SQR (dado01)
+
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Função de Inicialização
+INIT:
+    LXI H,C100      ; Aponta para o início da memória
+    MVI M,05H       ; Inicializa dado01 = 5
+    RET
+
+; Função de Multiplicação por somas sucessivas
+SQR:
+    MVI A,OOH         
+    MOV B,M          ; Multiplicando (dado01) no registrador A
+    MOV C,M         ; Multiplicador (dado01) no registrador C
+BACK:
+    ADC B           
+    DCR C            
+    JNZ BACK         ; Repete enquanto o contador não for zero
+    RET
+
+; Programa Principal
+MAIN: 
+    CALL INIT        ; Inicializa variáveis
+        
+
+    LXI H,C100	   ; Aponta para os dados na memória
+    CALL SQR        ; Chama a função de multiplicação
+    STA C102        ; Armazena o resultado
+
+    HLT              ; Finaliza o programa
+
+END:
+
+; Entrada 05H
+; Saida 19H -> 25 em hexadecimal
+
+
+
+07.) Implementar um programa (Guia_1607.txt) para o processador 8085 para
+calcular o fatorial de um dado de 8 bits.
+dado02 = FAT (dado01)
+
+
+; Redireciona PC para a MAIN
+JMP MAIN
+
+; Função de Inicialização
+INIT:
+    LXI H,C100      ; Aponta para o início da memória
+    MVI M,05H       ; Inicializa dado01 = 5
+    RET
+
+; Função de Multiplicação por somas sucessivas
+IMUL:
+    MOV E,B        
+    MVI A,00
+    LOOP: 
+        ADD D
+        DCR E
+        JNZ LOOP
+    MOV D,A
+    RET
+
+; Programa Principal
+MAIN: 
+    CALL INIT        ; Inicializa variáveis
+    LXI H,C100	   ; Aponta para os dados na memória
+    MOV B,M
+    MVI D,01
+
+FAT:
+    CALL IMUL
+    DCR B
+    JNZ FAT
+    INX H
+    INX H
+    MOV M,D
+
+    HLT
+END:
+
+; Entrada 05H   -> 5.4.3.2.1 = 20.3.4.2 = 60.2.1 = 120.1 = 120
+; Saida 78H -> 120 em hexadecimal
