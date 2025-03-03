@@ -1,0 +1,54 @@
+char entrada = 'c';   
+const int led = 13;
+int i;
+
+void setup() {
+  Serial.begin(9600);     // abre a porta serial a 9600 bps
+  pinMode(led,OUTPUT);
+}
+
+void loop() {
+  // verifica se existem dados a serem lidos
+  if (Serial.available() > 0) //Retorna quantos bytes tem a serem lidos
+  {
+    // lê o dado
+    entrada = Serial.read(); //Ler 1 byte do ques esta lá
+
+    if (entrada == 'a')
+      digitalWrite(led,HIGH);
+    if (entrada == 'b')
+      digitalWrite(led,LOW);
+    Serial.println(entrada);
+  }
+}
+
+
+// Se for com inteiro
+
+
+int entrada = 0;   
+const int led = 13;
+int i;
+
+
+
+void setup() {
+  Serial.begin(9600);     // abre a porta serial a 9600 bps
+  pinMode(led,OUTPUT);
+}
+
+void loop() {
+  // verifica se existem dados a serem lidos
+  if (Serial.available() > 0) //Retorna quantos bytes tem a serem lidos
+  {
+    // lê o dado
+    entrada = Serial.read() - 48; //Ler 1 byte no formato ASCII precisa tirar 48 para virar numero (no entanto só funciona até 9)
+
+    if (entrada == 1)
+      digitalWrite(led,HIGH);
+    if (entrada == 2)
+      digitalWrite(led,LOW);
+    Serial.println(entrada);
+  }
+  delay(100);
+}

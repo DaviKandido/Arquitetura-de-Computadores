@@ -1,0 +1,15 @@
+// Testando a saída Serial
+ 
+int numero=0;
+
+void setup() {
+Serial.begin (9600); //Estabele coneção entre adruino e pc
+Serial.println("Gerando valores sequenciais");
+}
+
+void loop(){
+  Serial.print ("Valor: ");
+  Serial.println(numero);
+  delay(500);
+  numero++;
+}	
