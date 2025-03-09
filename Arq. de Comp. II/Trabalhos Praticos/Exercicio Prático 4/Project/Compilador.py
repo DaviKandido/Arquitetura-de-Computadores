@@ -28,6 +28,7 @@ def ler_Arquivo(arquivo):
         conteudo = f.readlines()  # Leitura das linhas do arquivo
         return conteudo
     
+
 def salvar_arquivo(conteudo, arquivo):
     pasta, nome =  arquivo.split("/") # Divide o caminho do arquivo em pasta e nome
 
@@ -37,9 +38,8 @@ def salvar_arquivo(conteudo, arquivo):
             f.write(i + "\n")
     
 
-
 def estrator_operacoes():
-    instrucao = ler_Arquivo("dados/testeula.ula")
+    instrucao = ler_Arquivo("dados/testeula.ula") # Leitura do arquivo 'testeula.ula', estraindo as instruções
 
     Array_Operacoes = []
 
@@ -59,10 +59,12 @@ def estrator_operacoes():
     return Array_Operacoes
 
 
+# Função principal
 def main():
     operacao = estrator_operacoes()
     salvar_arquivo(operacao, "dados/testeula.hex") # Salva as instruções no arquivo 'testeula.hex'
 
 
+# Executa a função main() apenas se o script for executado diretamente
 if __name__ == "__main__":
     main()
