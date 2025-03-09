@@ -20,20 +20,15 @@ Mnemonico = {
       "nAonBn": "F"
 }
 
+# Função para ler um arquivo
 def ler_Arquivo(arquivo):
-    pasta, nome = arquivo.split("/") # Divide o caminho do arquivo em pasta e nome
-
-    caminho_completo = os.path.join(pasta, nome) # Caminho completo do arquivo
-    with open(caminho_completo, "r") as f:  # Abre o arquivo em modo de leitura
+    with open(arquivo, "r") as f:  # Abre o arquivo em modo de leitura
         conteudo = f.readlines()  # Leitura das linhas do arquivo
         return conteudo
     
-
+# Função para salvar no arquivo
 def salvar_arquivo(conteudo, arquivo):
-    pasta, nome =  arquivo.split("/") # Divide o caminho do arquivo em pasta e nome
-
-    caminho_completo = os.path.join(pasta, nome) # Caminho completo do arquivo
-    with open(caminho_completo, "w") as f:
+    with open(arquivo, "w") as f:
         for i in conteudo:  # Escreve cada linha do conteúdo no arquivo
             f.write(i + "\n")
     

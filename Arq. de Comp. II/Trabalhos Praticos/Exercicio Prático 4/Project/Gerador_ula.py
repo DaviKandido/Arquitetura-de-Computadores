@@ -24,7 +24,7 @@ def gerar_instrucoes():
     
     instrucoes = []  # Lista para armazenar as instruções formatadas
     
-    for _ in range(100):  # Gera 20 instruções aleatórias
+    for _ in range(100):  # Gera 100 instruções aleatórias
         x = random.randint(0, 15)  # Gera um valor aleatório para X (0 a 15)
         y = random.randint(0, 15)  # Gera um valor aleatório para Y (0 a 15)
         operacao = random.choice(list(operacoes.keys()))  # Escolhe uma operação aleatória
@@ -48,14 +48,11 @@ def salvar_arquivo(nome, conteudo):
         f.write("fim.\n")
 
 def main():
-    # Gera as instruções e suas representações em hexadecimal
-    instrucoes = gerar_instrucoes()
+    instrucoes = gerar_instrucoes() # Gera as instruções e suas representações em hexadecimal
     
-    # Salva as instruções no arquivo 'testeula.ula'
-    salvar_arquivo("testeula.ula", instrucoes)
+    salvar_arquivo("testeula.ula", instrucoes) # Salva as instruções no arquivo 'testeula.ula'
     
-    # Exibe uma mensagem informando que os arquivos foram gerados
-    print("Arquivos gerados na pasta 'dados': testeula.ula e testeula.hex")
+    print("Arquivos gerados na pasta 'dados': testeula.ula e testeula.hex") # Exibe uma mensagem informando que os arquivos foram gerados
 
 # Executa a função main() apenas se o script for executado diretamente
 if __name__ == "__main__":
