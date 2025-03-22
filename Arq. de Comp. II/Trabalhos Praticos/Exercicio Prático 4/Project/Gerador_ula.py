@@ -24,7 +24,7 @@ def gerar_instrucoes():
     
     instrucoes = []  # Lista para armazenar as instruções formatadas
     
-    for _ in range(100):  # Gera 100 instruções aleatórias
+    for _ in range(96):  # Gera 100 instruções aleatórias
         x = random.randint(0, 15)  # Gera um valor aleatório para X (0 a 15)
         y = random.randint(0, 15)  # Gera um valor aleatório para Y (0 a 15)
         operacao = random.choice(list(operacoes.keys()))  # Escolhe uma operação aleatória
